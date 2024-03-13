@@ -1,0 +1,2577 @@
+@prefix : <http://helpseeker.co/compass#> .
+@prefix ns: <http://creativecommons.org/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix term: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@base <http://helpseeker.co/compass> .
+
+<http://helpseeker.co/compass> rdf:type owl:Ontology ;
+                                owl:imports <http://ontology.eil.utoronto.ca/5087/1/Activity.owl> ,
+                                            <http://ontology.eil.utoronto.ca/5087/2/City.owl> ,
+                                            <http://ontology.eil.utoronto.ca/Survey/survey.owl> ,
+                                            <http://ontology.eil.utoronto.ca/cids/cids.owl> ,
+                                            <http://ontology.eil.utoronto.ca/tove/icontact.owl> ,
+                                            <https://schema.org/docs/schemaorg.owl> ;
+                                ns:license "http://creativecommons.org/licenses/by/3.0/" ;
+                                term:creator "Mark S. Fox, msf@eil.utoronto.ca; Daniela Rosu, drosu@cs.toronto.edu; Bart Gajderowicz, bartg@mie.utoronto.ca; Dishu Lyu, lvds2000@gmail.com"^^xsd:string ;
+                                term:description """
+The Compass ontology contains
+- Compass Project Client Ontology
+- Compass Project Service Ontology
+- Compass Project Need Ontology"""^^xsd:string ;
+                                term:issued "January 27, 2022"^^xsd:string ;
+                                term:modified "November 17, 2022"^^xsd:string ;
+                                term:title "Compass Ontology"^^xsd:string ;
+                                vann:preferredNamespacePrefix "cp"^^xsd:string ;
+                                vann:preferredNamespaceUri "http://helpseeker.co/compass#"^^xsd:string ;
+                                owl:versionInfo """
+Version 0 January 27, 2022: Initial creation."""^^xsd:string .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/2002/07/owl#maxQualifiedCardinality
+owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://helpseeker.co/compass#affectsClientState
+:affectsClientState rdf:type owl:ObjectProperty ;
+                    rdfs:range :ClientState .
+
+
+###  http://helpseeker.co/compass#affectsRisk
+:affectsRisk rdf:type owl:ObjectProperty ;
+             rdfs:range :Risk .
+
+
+###  http://helpseeker.co/compass#atOrganization
+:atOrganization rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#branch
+:branch rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#causedBy
+:causedBy rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#changes
+:changes rdf:type owl:ObjectProperty ;
+         rdfs:range <http://ontology.eil.utoronto.ca/ISO21972/iso21972#Feature> .
+
+
+###  http://helpseeker.co/compass#contractDate
+:contractDate rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#dataCollector
+:dataCollector rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#eventType
+:eventType rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#forClient
+:forClient rdf:type owl:ObjectProperty ;
+           rdfs:range :Event .
+
+
+###  http://helpseeker.co/compass#forNeed
+:forNeed rdf:type owl:ObjectProperty ;
+         rdfs:range :Need .
+
+
+###  http://helpseeker.co/compass#forPerson
+:forPerson rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#forProgram
+:forProgram rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#forReferral
+:forReferral rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#forService
+:forService rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#forStakeholder
+:forStakeholder rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#fundersProgram
+:fundersProgram rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasActualClientState
+:hasActualClientState rdf:type owl:ObjectProperty ;
+                      rdfs:range :ClientState .
+
+
+###  http://helpseeker.co/compass#hasAddress
+:hasAddress rdf:type owl:ObjectProperty ;
+            owl:equivalentProperty <http://ontology.eil.utoronto.ca/tove/icontact#hasAddress> .
+
+
+###  http://helpseeker.co/compass#hasApplication
+:hasApplication rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasBirthEvent
+:hasBirthEvent rdf:type owl:ObjectProperty ;
+               rdfs:range :Event .
+
+
+###  http://helpseeker.co/compass#hasCatchmentArea
+:hasCatchmentArea rdf:type owl:ObjectProperty ;
+                  rdfs:range :CL_CatchmentArea .
+
+
+###  http://helpseeker.co/compass#hasCause
+:hasCause rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasCertification
+:hasCertification rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasCommunityCharacteristic
+:hasCommunityCharacteristic rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasConditionTemporality
+:hasConditionTemporality rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasDeadline
+:hasDeadline rdf:type owl:ObjectProperty ;
+             rdfs:range <http://www.w3.org/2006/time#DateTimeDescription> .
+
+
+###  http://helpseeker.co/compass#hasDeathEvent
+:hasDeathEvent rdf:type owl:ObjectProperty ;
+               rdfs:range :Event .
+
+
+###  http://helpseeker.co/compass#hasDependent
+:hasDependent rdf:type owl:ObjectProperty ;
+              rdfs:range <http://ontology.eil.utoronto.ca/cids/cids#Person> .
+
+
+###  http://helpseeker.co/compass#hasDesiredClientState
+:hasDesiredClientState rdf:type owl:ObjectProperty ;
+                       rdfs:range :ClientState .
+
+
+###  http://helpseeker.co/compass#hasDuration
+:hasDuration rdf:type owl:ObjectProperty ;
+             rdfs:range <http://www.w3.org/2006/time#GeneralDurationDescription> .
+
+
+###  http://helpseeker.co/compass#hasEducationEvent
+:hasEducationEvent rdf:type owl:ObjectProperty ;
+                   rdfs:range :Event .
+
+
+###  http://helpseeker.co/compass#hasEmploymentEvent
+:hasEmploymentEvent rdf:type owl:ObjectProperty ;
+                    rdfs:range :Event .
+
+
+###  http://helpseeker.co/compass#hasEndDate
+:hasEndDate rdf:type owl:ObjectProperty ;
+            rdfs:range <http://www.w3.org/2006/time#DateTimeDescription> .
+
+
+###  http://helpseeker.co/compass#hasEthnicity
+:hasEthnicity rdf:type owl:ObjectProperty ;
+              rdfs:range :CL-Ethnicity .
+
+
+###  http://helpseeker.co/compass#hasFailureType
+:hasFailureType rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasFeature
+:hasFeature rdf:type owl:ObjectProperty ;
+            rdfs:range :ClientFeature .
+
+
+###  http://helpseeker.co/compass#hasFocus
+:hasFocus rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasFunding
+:hasFunding rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasGender
+:hasGender rdf:type owl:ObjectProperty ;
+           rdfs:range :CL-Gender .
+
+
+###  http://helpseeker.co/compass#hasGenderEvent
+:hasGenderEvent rdf:type owl:ObjectProperty ;
+                rdfs:range :Event .
+
+
+###  http://helpseeker.co/compass#hasGoal
+:hasGoal rdf:type owl:ObjectProperty ;
+         rdfs:range <http://ontology.eil.utoronto.ca/tove/organization#Goal> .
+
+
+###  http://helpseeker.co/compass#hasHomelessEvent
+:hasHomelessEvent rdf:type owl:ObjectProperty ;
+                  rdfs:range :Event .
+
+
+###  http://helpseeker.co/compass#hasHousingEvent
+:hasHousingEvent rdf:type owl:ObjectProperty ;
+                 rdfs:range :Event .
+
+
+###  http://helpseeker.co/compass#hasHousingType
+:hasHousingType rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasImmigrationEvent
+:hasImmigrationEvent rdf:type owl:ObjectProperty ;
+                     rdfs:range :Event .
+
+
+###  http://helpseeker.co/compass#hasImmigrationType
+:hasImmigrationType rdf:type owl:ObjectProperty ;
+                    rdfs:range :CL-ImmigrationType .
+
+
+###  http://helpseeker.co/compass#hasInterviewer
+:hasInterviewer rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasJusticeSystemEvent
+:hasJusticeSystemEvent rdf:type owl:ObjectProperty ;
+                       rdfs:range :Event .
+
+
+###  http://helpseeker.co/compass#hasLanguage
+:hasLanguage rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasLocation
+:hasLocation rdf:type owl:ObjectProperty ;
+             rdfs:range <http://ontology.eil.utoronto.ca/ISO21972/iso21972#Feature> .
+
+
+###  http://helpseeker.co/compass#hasMaritalEvent
+:hasMaritalEvent rdf:type owl:ObjectProperty ;
+                 rdfs:range :Event .
+
+
+###  http://helpseeker.co/compass#hasMedicalEvent
+:hasMedicalEvent rdf:type owl:ObjectProperty ;
+                 rdfs:range :Event .
+
+
+###  http://helpseeker.co/compass#hasMode
+:hasMode rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasNameEvent
+:hasNameEvent rdf:type owl:ObjectProperty ;
+              rdfs:range :Event .
+
+
+###  http://helpseeker.co/compass#hasNeed
+:hasNeed rdf:type owl:ObjectProperty ;
+         rdfs:range :ClientNeed .
+
+
+###  http://helpseeker.co/compass#hasNeedSatisfier
+:hasNeedSatisfier rdf:type owl:ObjectProperty ;
+                  rdfs:range :NeedSatisfier .
+
+
+###  http://helpseeker.co/compass#hasOrganization
+:hasOrganization rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasOutcome
+:hasOutcome rdf:type owl:ObjectProperty ;
+            rdfs:range <http://ontology.eil.utoronto.ca/cids/cids#StakeholderOutcome> .
+
+
+###  http://helpseeker.co/compass#hasParent
+:hasParent rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasPreviousAddress
+:hasPreviousAddress rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasProblem
+:hasProblem rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasProficiency
+:hasProficiency rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasReligion
+:hasReligion rdf:type owl:ObjectProperty ;
+             rdfs:range :CL-Religion .
+
+
+###  http://helpseeker.co/compass#hasRequirement
+:hasRequirement rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasRiskFactor
+:hasRiskFactor rdf:type owl:ObjectProperty ;
+               rdfs:range :RiskFactor .
+
+
+###  http://helpseeker.co/compass#hasServiceEvent
+:hasServiceEvent rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasSex
+:hasSex rdf:type owl:ObjectProperty ;
+        rdfs:range :CL-Sex .
+
+
+###  http://helpseeker.co/compass#hasStartDate
+:hasStartDate rdf:type owl:ObjectProperty ;
+              rdfs:range <http://www.w3.org/2006/time#DateTimeDescription> .
+
+
+###  http://helpseeker.co/compass#hasState
+:hasState rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasStatus
+:hasStatus rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#hasSubGoal
+:hasSubGoal rdf:type owl:ObjectProperty ;
+            rdfs:range :ClientGoal .
+
+
+###  http://helpseeker.co/compass#hasType
+:hasType rdf:type owl:ObjectProperty ;
+         rdfs:range :CL-EducationType .
+
+
+###  http://helpseeker.co/compass#hasUserStakeholder
+:hasUserStakeholder rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#inducedByEvent
+:inducedByEvent rdf:type owl:ObjectProperty ;
+                rdfs:range :Event .
+
+
+###  http://helpseeker.co/compass#inducesClientState
+:inducesClientState rdf:type owl:ObjectProperty ;
+                    rdfs:range :ClientState .
+
+
+###  http://helpseeker.co/compass#inducesCommunityRisk
+:inducesCommunityRisk rdf:type owl:ObjectProperty ;
+                      rdfs:range :CommunityRisk .
+
+
+###  http://helpseeker.co/compass#inducesGoal
+:inducesGoal rdf:type owl:ObjectProperty ;
+             rdfs:range :ClientGoal .
+
+
+###  http://helpseeker.co/compass#inducesNeed
+:inducesNeed rdf:type owl:ObjectProperty ;
+             rdfs:range :Need .
+
+
+###  http://helpseeker.co/compass#inducesState
+:inducesState rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#isBarrierFor
+:isBarrierFor rdf:type owl:ObjectProperty ;
+              rdfs:range :ClientState .
+
+
+###  http://helpseeker.co/compass#isComputationOf
+:isComputationOf rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#isEstimateOf
+:isEstimateOf rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#mappedTo
+:mappedTo rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#membeOfAboriginalGroup
+:membeOfAboriginalGroup rdf:type owl:ObjectProperty ;
+                        rdfs:range :CL-CA-AboriginalGroup .
+
+
+###  http://helpseeker.co/compass#nextEvent
+:nextEvent rdf:type owl:ObjectProperty ;
+           rdfs:range :Event .
+
+
+###  http://helpseeker.co/compass#occursAt
+:occursAt rdf:type owl:ObjectProperty ;
+          rdfs:range <http://www.w3.org/2006/time#Interval> .
+
+
+###  http://helpseeker.co/compass#ofClient
+:ofClient rdf:type owl:ObjectProperty ;
+          rdfs:range :Client .
+
+
+###  http://helpseeker.co/compass#performs
+:performs rdf:type owl:ObjectProperty ;
+          rdfs:range <http://ontology.eil.utoronto.ca/cids/cids#Activity> .
+
+
+###  http://helpseeker.co/compass#previousEvent
+:previousEvent rdf:type owl:ObjectProperty ;
+               rdfs:range :Event .
+
+
+###  http://helpseeker.co/compass#providedBy
+:providedBy rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#providesSatisfier
+:providesSatisfier rdf:type owl:ObjectProperty ;
+                   rdfs:range :NeedSatisfier .
+
+
+###  http://helpseeker.co/compass#providesService
+:providesService rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#providingOrganization
+:providingOrganization rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#providingProgram
+:providingProgram rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#receivedFrom
+:receivedFrom rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#referringProgram
+:referringProgram rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#satisfiesStakeholder
+:satisfiesStakeholder rdf:type owl:ObjectProperty .
+
+
+###  http://helpseeker.co/compass#withNeedSatisfier
+:withNeedSatisfier rdf:type owl:ObjectProperty .
+
+
+###  http://ontology.eil.utoronto.ca/tove/icontact#hasAddress
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://helpseeker.co/compass#birthLanguage
+:birthLanguage rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#hasAcuityScore
+:hasAcuityScore rdf:type owl:DatatypeProperty ;
+                rdfs:range xsd:string .
+
+
+###  http://helpseeker.co/compass#hasCauseComment
+:hasCauseComment rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#hasChangeType
+:hasChangeType rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:string .
+
+
+###  http://helpseeker.co/compass#hasCondition
+:hasCondition rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#hasCost
+:hasCost rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#hasEndTime
+:hasEndTime rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#hasImpact
+:hasImpact rdf:type owl:DatatypeProperty ;
+           rdfs:range xsd:string .
+
+
+###  http://helpseeker.co/compass#hasImportance
+:hasImportance rdf:type owl:DatatypeProperty ;
+               rdfs:range xsd:string .
+
+
+###  http://helpseeker.co/compass#hasIncome
+:hasIncome rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#hasLikelihoodScore
+:hasLikelihoodScore rdf:type owl:DatatypeProperty ;
+                    rdfs:range xsd:string .
+
+
+###  http://helpseeker.co/compass#hasLocation
+:hasLocation rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#hasMetaData
+:hasMetaData rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#hasName
+:hasName rdf:type owl:DatatypeProperty ;
+         rdfs:range xsd:string .
+
+
+###  http://helpseeker.co/compass#hasNeedType
+:hasNeedType rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:string .
+
+
+###  http://helpseeker.co/compass#hasNote
+:hasNote rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#hasNumber
+:hasNumber rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#hasSatisfierType
+:hasSatisfierType rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#hasSource
+:hasSource rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#hasStartTime
+:hasStartTime rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#hasStatusStr
+:hasStatusStr rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#hasTemporalHorizon
+:hasTemporalHorizon rdf:type owl:DatatypeProperty ;
+                    rdfs:range xsd:string .
+
+
+###  http://helpseeker.co/compass#hasTimeHorizon
+:hasTimeHorizon rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#hasTimeScale
+:hasTimeScale rdf:type owl:DatatypeProperty ;
+              rdfs:range xsd:string .
+
+
+###  http://helpseeker.co/compass#homeLanguage
+:homeLanguage rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#inQuantity
+:inQuantity rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#isExpressed
+:isExpressed rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:boolean .
+
+
+###  http://helpseeker.co/compass#isNormative
+:isNormative rdf:type owl:DatatypeProperty ;
+             rdfs:range xsd:boolean .
+
+
+###  http://helpseeker.co/compass#occursAt
+:occursAt rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#receivedAmount
+:receivedAmount rdf:type owl:DatatypeProperty .
+
+
+###  http://helpseeker.co/compass#requestedAmount
+:requestedAmount rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://helpseeker.co/compass#ActualState
+:ActualState rdf:type owl:Class ;
+             rdfs:subClassOf :ClientState ;
+             term:description """
+ActualClientState: a person’s current condition, e.g.,  “feeling hungry”, “(living) in an unsafe environment”, “(feeling) depressed”
+"""^^xsd:string ;
+             rdfs:label "Actual Client State"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#Application
+:Application rdf:type owl:Class ;
+             rdfs:subClassOf :Service ,
+                             owl:Thing ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasSource ;
+                               owl:allValuesFrom xsd:string
+                             ] ;
+             term:description """
+Clients can interact with service providers through a computer application, a subclass of cids:Service. An Application has the following property:
+•	hasSource: The URL or unique address where the application can be referenced.
+"""^^xsd:string ;
+             rdfs:label "Application"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#ApplicationEvent
+:ApplicationEvent rdf:type owl:Class ;
+                  rdfs:subClassOf :ServiceEvent ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasMetaData ;
+                                    owl:allValuesFrom xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasSource ;
+                                    owl:allValuesFrom xsd:string
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasApplication ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :Application
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasUserStakeholder ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Stakeholder>
+                                  ] ;
+                  term:description """
+Client interactions with service providers through a computer application requires logging capabilities to capture related information.
+
+• hasUserStakeholder: the stakeholder that was using the application when the event was created
+• dateCreated: timestamp when the event was created
+• hasSource: the URL or unique address where this event originated
+• hasMetaData: the information stored with the event
+"""^^xsd:string ;
+                  rdfs:label "Application Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#BirthEvent
+:BirthEvent rdf:type owl:Class ;
+            rdfs:subClassOf :MedicalEvent ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :forPerson ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Person>
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasSex ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :CL-Sex
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasStatus ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :CL-BirthStatus
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasParent ;
+                              owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                              owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Person>
+                            ] ;
+            term:description """
+A BirthEvent captures a birth that is important to the Client, including the client.
+
+• hasStatus: identifies the status of the birth.
+• hasSex: identifies whether the baby is male or female.
+• hasParent: identifies the persons who are the birth parent.
+• forPerson: information on the baby.
+"""^^xsd:string ;
+            rdfs:label "Birth Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#CL-BirthStatus
+:CL-BirthStatus rdf:type owl:Class ;
+                rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-CA-AboriginalGroup
+:CL-CA-AboriginalGroup rdf:type owl:Class ;
+                       rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-CatchmentArea
+:CL-CatchmentArea rdf:type owl:Class ;
+                  rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-DeathCause
+:CL-DeathCause rdf:type owl:Class ;
+               rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-EducationStatus
+:CL-EducationStatus rdf:type owl:Class ;
+                    rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-EducationType
+:CL-EducationType rdf:type owl:Class ;
+                  rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-EmploymentStatus
+:CL-EmploymentStatus rdf:type owl:Class ;
+                     rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-Ethnicity
+:CL-Ethnicity rdf:type owl:Class ;
+              rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-Gender
+:CL-Gender rdf:type owl:Class ;
+           rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-GenderCause
+:CL-GenderCause rdf:type owl:Class ;
+                rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-HomelessCause
+:CL-HomelessCause rdf:type owl:Class ;
+                  rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-HomelessType
+:CL-HomelessType rdf:type owl:Class ;
+                 rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-HousingCause
+:CL-HousingCause rdf:type owl:Class ;
+                 rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-HousingType
+:CL-HousingType rdf:type owl:Class ;
+                rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-ImmigrationStatus
+:CL-ImmigrationStatus rdf:type owl:Class ;
+                      rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-ImmigrationType
+:CL-ImmigrationType rdf:type owl:Class ;
+                    rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-JusticeSystemEventType
+:CL-JusticeSystemEventType rdf:type owl:Class ;
+                           rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-Language
+:CL-Language rdf:type owl:Class ;
+             rdfs:subClassOf owl:Thing .
+
+
+###  http://helpseeker.co/compass#CL-LanguageProficiency
+:CL-LanguageProficiency rdf:type owl:Class ;
+                        rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-Languages
+:CL-Languages rdf:type owl:Class ;
+              rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-MaritalStatus
+:CL-MaritalStatus rdf:type owl:Class ;
+                  rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-MilitaryBranch
+:CL-MilitaryBranch rdf:type owl:Class ;
+                   rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-MilitaryStatus
+:CL-MilitaryStatus rdf:type owl:Class ;
+                   rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-NameCause
+:CL-NameCause rdf:type owl:Class ;
+              rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-RCMPBranch
+:CL-RCMPBranch rdf:type owl:Class ;
+               rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-RCMPStatus
+:CL-RCMPStatus rdf:type owl:Class ;
+               rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-Religion
+:CL-Religion rdf:type owl:Class ;
+             rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-RiskEventType
+:CL-RiskEventType rdf:type owl:Class ;
+                  rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-Role
+:CL-Role rdf:type owl:Class ;
+         rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-ServiceMode
+:CL-ServiceMode rdf:type owl:Class ;
+                rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-ServiceStatus
+:CL-ServiceStatus rdf:type owl:Class ;
+                  rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-Sex
+:CL-Sex rdf:type owl:Class ;
+        rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL-Temporality
+:CL-Temporality rdf:type owl:Class ;
+                rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> .
+
+
+###  http://helpseeker.co/compass#CL_CatchmentArea
+:CL_CatchmentArea rdf:type owl:Class ;
+                  rdfs:subClassOf owl:Thing .
+
+
+###  http://helpseeker.co/compass#Certification
+:Certification rdf:type owl:Class ;
+               rdfs:subClassOf owl:Thing .
+
+
+###  http://helpseeker.co/compass#Client
+:Client rdf:type owl:Class ;
+        rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Person> ,
+                        owl:Thing ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasBirthEvent ;
+                          owl:allValuesFrom :BirthEvent
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasDeathEvent ;
+                          owl:allValuesFrom :DeathEvent
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasDependent ;
+                          owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#Person>
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasEducationEvent ;
+                          owl:allValuesFrom :EducationEvent
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasEmploymentEvent ;
+                          owl:allValuesFrom :EmploymentEvent
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasEthnicity ;
+                          owl:allValuesFrom :CL-Ethnicity
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasGenderEvent ;
+                          owl:allValuesFrom :GenderEvent
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasGoal ;
+                          owl:allValuesFrom <http://ontology.eil.utoronto.ca/tove/organization#Goal>
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasHousingEvent ;
+                          owl:allValuesFrom :HousingEvent
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasImmigrationEvent ;
+                          owl:allValuesFrom :ImmigrationEvent
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasJusticeSystemEvent ;
+                          owl:allValuesFrom :JusticeSystemEvent
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasMaritalEvent ;
+                          owl:allValuesFrom :MaritalEvent
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasMedicalEvent ;
+                          owl:allValuesFrom :MedicalEvent
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasNameEvent ;
+                          owl:allValuesFrom :NameEvent
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasNeed ;
+                          owl:allValuesFrom :ClientNeed
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasOutcome ;
+                          owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#StakeholderOutcome>
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasProblem ;
+                          owl:allValuesFrom :ClientProblem
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasReligion ;
+                          owl:allValuesFrom :CL-Religion
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasServiceEvent ;
+                          owl:allValuesFrom :ServiceEvent
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasState ;
+                          owl:allValuesFrom :ClientState
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasStatus ;
+                          owl:allValuesFrom :ClientStatus
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :membeOfAboriginalGroup ;
+                          owl:allValuesFrom :CL-CA-AboriginalGroup
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :satisfiesStakeholder ;
+                          owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#Stakeholder>
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty <https://schema.org/knowsLanguage> ;
+                          owl:allValuesFrom :LanguageAbility
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasGender ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :CL-Gender
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasAcuityScore ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onDataRange xsd:string
+                        ] ;
+        term:description """
+Client inherits all properties of 5087-2:Person and cids:Stakeholder. The following graph depicts the main classes and properties in the cids:Stakeholder.  Please refer to the CIDS manual for further details.
+
+Client extends these classes with the following properties:
+•	satisfiesStakeholder: Identifies the stakeholder specifications that the client satisfies.
+•	hasGender: A coded property specifying the gender.
+•	hasEthnicity: A coded property specifying known ethnicities of the client.
+•	memberOfAboriginalGroup: A coded property identifying the aboriginal group the client is a member of, if any.
+•	hasReligion: A coded property specifying known religions of the client.
+•	hasDependent: A set of Person instances.
+•	schema:knowsLanguage: links to instances of LanguageAbility that specifies languages known and proficiency.
+
+•	hasServiceEvent: links to instances of ServiceEvent, each defining a service the client has received.
+•	hasEducationEvent: links to instances of EducationEvent, each defining education the client has received.
+•	hasEmploymentEvent: links to instances of EmploymentEvent.
+•	hasImmigrationEvent: links to instances of ImmigrationEvent, each defining stages of immigration, if relevant.
+•	hasMedicalEvent: links to instances of MedicalEvent, each defining separate medical conditions, including births and deaths, which are subclasses.
+•	hasMaritalEvent: links to instances of MaritalEvent
+
+•	hasHousingEvent: links to instances of HousingEvent that tracks changes in housing including homelessness.
+•	hasNameEvent: links to instances of NameEvent.
+•	hasGenderEvent: links to instances of GenderEvent.
+•	hasBirthEvent: links to instances of BirthEvent associated with the client.
+•	hasDeathEvent: links to instances of DeathEvent associated with the client.
+•	hasHomelessEvent: links to instances of HomelessEvent associated with the client.
+•	hasJusticeSystemEvent: links to instances of JusticeSystemEvent.
+
+•	hasOutcome links to instances of StakeholderOutcome that specify the outcomes experienced by the client.
+•	hasNeed: links to instances of Need that specify the needs of the client.
+•	hasGoal: links to instances of Goal that specify the goals of the client.
+•	hasProblem: links to instances of Problem that specify the problems of the client.
+•	hasStatus: links to instances of Status that specify the status of the client.
+•	hasClientState: links to instances of ClientState that specify the state the client is in.
+•	hasAcuityScore specifies the acuity of the need is to be satisfied, as assessed by a social worker / clinician, e.g., “Low”, “Medium”, “High”, 1, 2, 3.
+"""^^xsd:string ;
+        rdfs:label "Client"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#ClientEvent
+:ClientEvent rdf:type owl:Class ;
+             rdfs:subClassOf :Event ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :forClient ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Client
+                             ] ;
+             term:description """
+An EmploymentEvent is used to describe a client employment experience, such as working at a company for several years, where each change in role results in a new event, or working part time for a week. 
+
+• atOrganization: The organization where the client works, if any. 
+• org:holds: The post in the organization they hold, if any.
+• hasStatus: The status of employment defined by CLEmploymentStatus, e.g., {completed, quit, fired, retired, layedOff, unemployed, selfEmployed, underEmployed}
+• hasIncome: The annual income from their employment, if any.
+"""^^xsd:string ;
+             rdfs:label "Client Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#ClientFeature
+:ClientFeature rdf:type owl:Class ;
+               rdfs:subClassOf owl:Thing .
+
+
+###  http://helpseeker.co/compass#ClientGoal
+:ClientGoal rdf:type owl:Class ;
+            rdfs:subClassOf owl:Thing ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasSubGoal ;
+                              owl:allValuesFrom :ClientGoal
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :inducesNeed ;
+                              owl:allValuesFrom :ClientNeed
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :inducesNeed ;
+                              owl:allValuesFrom :Need
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasCode> ;
+                              owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#Code>
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasTimeHorizon ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange xsd:string
+                            ] ;
+            term:description """
+A client goal is a cognitive representation that includes a (desired) client state that one must deploy various means to make happen, and/or maintain, and a time horizon for achieving/maintaining it.
+
+• inducesNeed: links to instances of type Need that specify the client needs induced by the goal
+• hasTimeHorizon: specifies the timescale of the goal, e.g., short-term, long-term
+• hasSubGoal: links to instances of type Goal that specify subgoals
+• hasCode: specifies zero or more codes, created by various organizations, to identify a type of client goal.
+"""^^xsd:string ;
+            rdfs:label "Client Goal"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#ClientNeed
+:ClientNeed rdf:type owl:Class ;
+            rdfs:subClassOf owl:Thing ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasAcuityScore ;
+                              owl:allValuesFrom xsd:string
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasChangeType ;
+                              owl:allValuesFrom xsd:string
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasImportance ;
+                              owl:allValuesFrom xsd:string
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasNeedSatisfier ;
+                              owl:allValuesFrom :NeedSatisfier
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :ofClient ;
+                              owl:allValuesFrom :Client
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasDescription> ;
+                              owl:allValuesFrom xsd:string
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :isExpressed ;
+                              owl:allValuesFrom xsd:boolean
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :isNormative ;
+                              owl:allValuesFrom xsd:boolean
+                            ] ;
+            term:description """
+Client needs are met via need satisfiers, such as counseling, language training, information about the local school system, translation and interpretation, etc. Need satisfiers are discussed in depth in the following section. 
+
+Often client goals and needs, and the response to those needs (i.e., the provision of need satisfiers) are conflated during client assessments. For example, a person experiencing depression might be recorded as needing counselling, which is a need satisfier, instead of needing to improve their mental health state.
+
+Our framework can help alleviate this issue by offering support for representing client problems, goals, needs and need satisfiers explicitly and avoiding conducting needs assessments based on fixed commitments to particular forms of action, i.e., dispensing a particular set of need satisfiers, or the services that provide them (if the agency/community of practice does not differentiate between need satisfiers and the services that supply them).
+
+•	hasNeedSatisfier: links a ClientNeed instance with one or more satisfiers that may satisfy the need
+•	hasImportance: specifies how important satisfying the need is from the perception of the client / legal guardian / social worker, e.g., “Low”, “Medium”, “High”, 1, 2, 3, etc.
+•	hasAcuityScore: specifies the acuity of the need is to be satisfied, as assessed by a social worker / clinician, e.g., “Low”, “Medium”, “High”, 1, 2, 3
+•	hasNeedType: this is one or more types selected from a taxonomy of needs
+•	hasChangeType: specifies the type of change effected on a client’s state
+"""^^xsd:string ;
+            rdfs:label "Client Need"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#ClientOutcome
+:ClientOutcome rdf:type owl:Class ;
+               rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#StakeholderOutcome> ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasCode> ;
+                                 owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#Code>
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <http://www.w3.org/2001/sw/BestPractices/OEP/SimplePartWhole/part.owl#partOf> ;
+                                 owl:allValuesFrom :ServiceOutcome
+                               ] ;
+               term:description """
+Client outcome is a change in a set of client features, e.g., improved proficiency in English, improved life skills, improved nutrition, improved housing conditions, improved chances of recovery from alcohol adiction.
+
+• partOf: links to instances of more complex Outcome that this outcome is a part of.
+• hasCode: specifies zero or more codes, created by various organizations, to identify a type of client outcome.
+"""^^xsd:string ;
+               rdfs:label "Client Outcome"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#ClientProblem
+:ClientProblem rdf:type owl:Class ;
+               rdfs:subClassOf owl:Thing ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasEndDate ;
+                                 owl:allValuesFrom <http://www.w3.org/2006/time#DateTimeDescription>
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasStartDate ;
+                                 owl:allValuesFrom <http://www.w3.org/2006/time#DateTimeDescription>
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :inducesGoal ;
+                                 owl:allValuesFrom :ClientGoal
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasCode> ;
+                                 owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#Code>
+                               ] ;
+               term:description """
+A client problem is a cognitive representation of the discrepancy between an actual client state and a desired client state.
+
+• inducesGoal links to instances of type ClientGoal that specify the goals induced by the problem.
+• hasStartClientState links to instances of type ClientState that specify the actual state the client is in at the time the problem is identified
+• hasEndClientState links to instances of type ClientState  that specify the desired state of the client at the time the problem is identified
+• hasCode: specifies zero or more codes, created by various organizations, to identify a type of client  problem
+"""^^xsd:string ;
+               rdfs:label "Client Problem"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#ClientState
+:ClientState rdf:type owl:Class ;
+             rdfs:subClassOf :PersonState ,
+                             owl:Thing ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasTimeScale ;
+                               owl:allValuesFrom xsd:string
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isBarrierFor ;
+                               owl:allValuesFrom :ClientState
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasCode> ;
+                               owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#Code>
+                             ] ;
+             term:description """
+ClientState: a person’s condition with respect to circumstances, often, but not necessarily durable or lasting, e.g., is homeless, feels anxious, feels depressed, lacks basic life skills, etc..
+
+• isBarrierFor links to instances of type ClientState that specify the other states that could be adversely affected by this state.
+• hasTimeScale: specifies the timescale of the state, e.g., “acute”, “chronic”, “short-term”, “long-term”, medium-term”.
+• hasCode: specifies zero or more codes, created by various organizations, to identify a type of state for the client.
+
+"""^^xsd:string ;
+             rdfs:label "Client State"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#ClientStatus
+:ClientStatus rdf:type owl:Class ;
+              rdfs:subClassOf owl:Thing ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasCode> ;
+                                owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#Code>
+                              ] ;
+              term:description """
+We define a client’s status as their standing or position (relative to that of others) in the eyes of the law or some other form of recognized authority, such as immigration status as recognized by a country’s government, disability status as recognized by disability associations, service provider agencies, and various levels of government.
+"""^^xsd:string ;
+              rdfs:label "Client Status"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#Community
+:Community rdf:type owl:Class ;
+           rdfs:subClassOf <http://ontology.eil.utoronto.ca/5087/2/City/CityAdministrativeArea> ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasCommunityCharacteristic ;
+                             owl:allValuesFrom :CommunityCharacteristic
+                           ] ;
+           term:description """
+A community is made up 2 or more individuals that share some properties. These properties are represented as characteristics of the community. Hence, a Community class has the following property:
+•	hasCommunityCharacteristic: characteristics of the community this class represents
+"""^^xsd:string ;
+           rdfs:label "Community"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#CommunityCharacteristic
+:CommunityCharacteristic rdf:type owl:Class ;
+                         rdfs:subClassOf owl:Thing ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasCharacteristic> ;
+                                           owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#Characteristic>
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty :hasNumber ;
+                                           owl:cardinality "1"^^xsd:nonNegativeInteger
+                                         ] ;
+                         term:description """
+The CommunityCharacteristic references the identifying characteristics that several individauls have in common that in turn makes them a community.
+•	hasCommunityCharacteristic: the characteristic that defines this Community
+•	hasNumber: the number of people in the community (not all individuals in a spatial area (neighborhood), only those that fit the CommunityCharacteristic profile
+"""^^xsd:string ;
+                         rdfs:label "Community Characteristic"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#CommunityRisk
+:CommunityRisk rdf:type owl:Class ;
+               rdfs:subClassOf owl:Thing .
+
+
+###  http://helpseeker.co/compass#Computation
+:Computation rdf:type owl:Class ;
+             rdfs:subClassOf <http://ontology.eil.utoronto.ca/Survey/survey#Question_Answer> ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :isComputationOf ;
+                               owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#Indicator>
+                             ] ;
+             term:description """
+A Computation is an exact answer about an indicator, based on information in some dataset.
+•	dqv:computedOn: the dataset from which the computation is made (TBU)
+•	isComputationOf: the property the computation is of
+"""^^xsd:string ;
+             rdfs:label "Computation"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#DeathEvent
+:DeathEvent rdf:type owl:Class ;
+            rdfs:subClassOf :MedicalEvent ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasCause ;
+                              owl:allValuesFrom :CL-DeathCause
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :forPerson ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Person>
+                            ] ;
+            term:description """
+A DeathEvent captures the death of a person that is important to the Client, including the client.
+
+• forPerson: person who died (may not be the client)
+• hasCause: identifies the cause of death.
+"""^^xsd:string ;
+            rdfs:label "Death Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#DesiredState
+:DesiredState rdf:type owl:Class ;
+              rdfs:subClassOf :ClientState ;
+              term:description """
+DesiredClientState: a person’s desired condition, e.g.,  “(being) adequately fed”, “(living) in a safe, supportive environment”, “(being) in a good mental health state” 
+"""^^xsd:string ;
+              rdfs:label "Desired Client State"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#EducationEvent
+:EducationEvent rdf:type owl:Class ;
+                rdfs:subClassOf :ClientEvent ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasCertification ;
+                                  owl:someValuesFrom :Certification
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasType ;
+                                  owl:allValuesFrom :CL-EducationType
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :atOrganization ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Organization>
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasStatus ;
+                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :CL-EducationStatus
+                                ] ;
+                term:description """
+An EducationEvent is used to describe a client educational or training experience, such as having a BSc, or taken first aid training.
+
+• hasStatus: the status of the education event, complete, inProgress or incomplete.
+• atOrganization: identifies the education organization the event took place.
+• hasCertification: identifies the type of certification the education event has.
+• hasType: identifies the type of education, including BA, BSC, etc.
+"""^^xsd:string ;
+                rdfs:label "Education Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#EmploymentEvent
+:EmploymentEvent rdf:type owl:Class ;
+                 rdfs:subClassOf :ClientEvent ,
+                                 <http://org.semanticweb.owlapi/error#Error1> ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :atOrganization ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Organization>
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasStatus ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :CL-EmploymentStatus
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasIncome ;
+                                   owl:cardinality "1"^^xsd:nonNegativeInteger
+                                 ] ;
+                 rdfs:label "Employment Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#Estimate
+:Estimate rdf:type owl:Class ;
+          rdfs:subClassOf <http://ontology.eil.utoronto.ca/Survey/survey#Question_Answer> ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :isEstimateOf ;
+                            owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#Indicator>
+                          ] ;
+          term:description """
+The Estimate is an extension of the survey approximate answer about an indicator, based on information in some dataset.
+•	dqv:computedOn: the dataset from which the estimate is made (TBU)
+•	isEstimateOf: the value this estimate is of
+
+"""^^xsd:string ;
+          rdfs:label "Estimate"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#Event
+:Event rdf:type owl:Class ;
+       rdfs:subClassOf <http://ontology.eil.utoronto.ca/5087/1/Activity/State> ,
+                       owl:Thing ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasDescription> ;
+                         owl:allValuesFrom xsd:string
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasLocation ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass <http://ontology.eil.utoronto.ca/ISO21972/iso21972#Feature>
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :nextEvent ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Event
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :occursAt ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass <http://www.w3.org/2006/time#Interval>
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :previousEvent ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Event
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasName ;
+                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                         owl:onDataRange xsd:string
+                       ] ;
+       term:description """
+Event is the super class of all events defined for a client. Events are used to log significant events that take place.
+
+• hasName: a unique name/identifier for the event
+• hasDescription: descriptions of the event
+• occursAt: time interval during which the event occurs
+• hasLocation: placename where the event occurred
+• previousEvent: link to previous related event, if any
+• nextEvent: link to next related event, if any
+"""^^xsd:string ;
+       rdfs:label "Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#Funding
+:Funding rdf:type owl:Class ;
+         rdfs:subClassOf owl:Thing ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :forProgram ;
+                           owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#Program>
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :forStakeholder ;
+                           owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#BeneficialStakeholder>
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty <http://www.w3.org/2006/time#hasTime> ;
+                           owl:allValuesFrom <http://www.w3.org/2006/time#DateTimeInterval>
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :receivedFrom ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :Organization
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :fundersProgram ;
+                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Program>
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :receivedAmount ;
+                           owl:cardinality "1"^^xsd:nonNegativeInteger
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :requestedAmount ;
+                           owl:cardinality "1"^^xsd:nonNegativeInteger
+                         ] ;
+         term:description """
+Funding specifies information about funding received by an organization.
+
+• receivedFrom: links to organization providing the funds. E.g., Ministry of Immigration, Refugees and Citizenship Canada (IRCC).
+• fundersProgram: Specified if the funder has a program through which the funding is provided. E.g., Service Delivery Improvement.
+• time:hasTime: Specifies a time interval over which the funding is awarded.
+• requestedAmount: Amount requested by recipient organization.
+• receivedAmount: Amount awarded by the funding organization.
+• forStakeholder: Specifies the beneficary stakeholders for whom the funds are to be used for. E.g., Indigenous female youth.
+• forProgram: Identifies the recipent organizations programs that the funding is to be used for.
+"""^^xsd:string ;
+         rdfs:label "Funding"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#Gender
+:Gender rdf:type owl:Class ;
+        rdfs:subClassOf owl:Thing ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasDescription> ;
+                          owl:allValuesFrom xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasCode> ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Code>
+                        ] .
+
+
+###  http://helpseeker.co/compass#GenderEvent
+:GenderEvent rdf:type owl:Class ;
+             rdfs:subClassOf :ClientEvent ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :hasCause ;
+                               owl:allValuesFrom :CL-GenderCause
+                             ] ;
+             term:description """
+A GenderEvent captures the a change in the client’s gender. It has the following additional property:
+
+• hasCause: identifies the cause of gender change.
+"""^^xsd:string ;
+             rdfs:label "Gender Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#HelpSeekerCode
+:HelpSeekerCode rdf:type owl:Class ;
+                rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Code> ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :hasOrganization ;
+                                  owl:hasValue :HelpSeeker
+                                ] ;
+                term:description """
+The cids:Code is defined by an organization that is identified by the hasOrganization property.
+The HelpSeekerCode class is custom for Help Seeker codes. Any code defined as a HelpSeekerCode instance is defined by HelpSeeker Technologies.
+
+• hasOrganization: Points to the Help Seeker Technologies company.
+"""^^xsd:string ;
+                rdfs:label "HelpSeeker Code"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#HousingEvent
+:HousingEvent rdf:type owl:Class ;
+              rdfs:subClassOf :ClientEvent ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasCause ;
+                                owl:allValuesFrom :CL-HousingCause
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasHousingType ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :CL-HousingType
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasPreviousAddress ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass <http://ontology.eil.utoronto.ca/tove/icontact#Address>
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty <http://ontology.eil.utoronto.ca/tove/icontact#hasAddress> ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass <http://ontology.eil.utoronto.ca/tove/icontact#Address>
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :contractDate ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass <http://www.w3.org/2006/time#Instant>
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :providingOrganization ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Organization>
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :providingProgram ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Program>
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :referringProgram ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Program>
+                              ] ;
+              term:description """
+A HousingEvent captures a single contiguous span of housing experienced by the client. It covers both regular housing and homelessness.
+
+• providingOrganization: identifies the organization that provided the housing, e.g., shelter, if homeless; housing project if government housing, etc. 
+• providingProgram: The program of the providing organization that provided the housing.
+• referringProgram: The program that referred the client to the providingProgram.
+• hasAddress: The address where the client resided by homeless took place.
+• hasPreviousAddress: The address of housing before this one.
+• hasHousingType: The type of housing, e.g., house, apartment, condominium, shelter, rough sleeper, etc.
+• hasCause: Identifies the cause of change of housing.
+• contractDate: Date a lease or other type of housing contract is signed.
+"""^^xsd:string ;
+              rdfs:label "Housing Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#ImmigrationEvent
+:ImmigrationEvent rdf:type owl:Class ;
+                  rdfs:subClassOf :ClientEvent ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :atOrganization ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Organization>
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasImmigrationType ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :CL-ImmigrationType
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasStatus ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass :CL-ImmigrationStatus
+                                  ] ;
+                  term:description """
+An ImmigrationEvent is used to describe a client immigration record. A separate immigration event would be created for each step in the immigration process.
+
+• atOrganization: The organization where the client works, if any. 
+• hasStatus: The status of employment defined by CL-ImmigrationStatus.
+• hasImmigrationType: The status of the type of immigration defined by CL-ImmigrationType.
+"""^^xsd:string ;
+                  rdfs:label "Immigration Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#Interview
+:Interview rdf:type owl:Class ;
+           rdfs:subClassOf <http://ontology.eil.utoronto.ca/Survey/survey#Survey> ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasInterviewer ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass <http://schema.org/Person>
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :dataCollector ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass <http://schema.org/Person>
+                           ] ;
+           term:description """
+The Interview class defines the interview that is conducted between an interviewer and an interviewee. It is a subclass of the sur:Survey class. It has the following properties:
+•	hasInterviewer: the person conducting the interview
+•	dataCollector: a person collecting data of the interview
+"""^^xsd:string ;
+           rdfs:label "Interview"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#JusticeSystemEvent
+:JusticeSystemEvent rdf:type owl:Class ;
+                    rdfs:subClassOf :ClientEvent ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :eventType ;
+                                      owl:allValuesFrom :CL-JusticeSystemEventType
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :atOrganization ;
+                                      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Organization>
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :hasStatusStr ;
+                                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                      owl:onDataRange xsd:string
+                                    ] ;
+                    term:description """
+A JusticeSystemEvent is used to describe a client’s experiences with the justice system. A separate event would be created for each justice system experience of note. For example, arrests, incarcerations, releases, etc.
+
+• atOrganization: The organization where the justice system event took place, e.g., a court house, police station, etc.
+• hasStatus: the status of the event, for now is simply a string.
+• eventType: is the type of justice event constrained to being and instance of the code list CL-JusticeSystemEventType.
+"""^^xsd:string ;
+                    rdfs:label "Justice System Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#LanguageAbility
+:LanguageAbility rdf:type owl:Class ;
+                 rdfs:subClassOf owl:Thing ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasProficiency ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :CL-LanguageProficiency
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <https://schema.org/knowsLanguage> ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onClass :CL-Languages
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :birthLanguage ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onDataRange xsd:boolean
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :homeLanguage ;
+                                   owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                   owl:onDataRange xsd:boolean
+                                 ] ;
+                 term:description """
+LanguageAbility class specifies for each language, the client’s proficiency and whether it is a birth and/or home language.
+
+•	knowsLanguage: defines the language being described.
+•	hasProficiency: level of proficiency the client has for the language, eg., {native, fluent, …}.
+•	birthLanguage: True if this was the language at birth.
+•	homeLanguage: True if this is the language used at home.
+"""^^xsd:string ;
+                 rdfs:label "Language Ability"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#LegalStatus
+:LegalStatus rdf:type owl:Class ;
+             rdfs:subClassOf owl:Thing .
+
+
+###  http://helpseeker.co/compass#MaritalEvent
+:MaritalEvent rdf:type owl:Class ;
+              rdfs:subClassOf :ClientEvent ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :forPerson ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Person>
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasStatus ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :CL-MaritalStatus
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty <http://ontology.eil.utoronto.ca/tove/icontact#hasAddress> ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass <http://ontology.eil.utoronto.ca/tove/icontact#Address>
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :atOrganization ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Organization>
+                              ] ;
+              term:description """
+A MaritalEvent captures the marriage, divorce, separation, etc. of importance to the client.
+
+• atOrganization: identifies the organization, e.g., hospital, where the birth took place, if any.
+• hasAddress: the address where the birth took place.
+• forPerson: identifies the two persons being married, separated or divorced.
+• hasStatus: identifies the type of event: married, separated, divorced, reunited, …
+"""^^xsd:string ;
+              rdfs:label "Marital Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#MedicalEvent
+:MedicalEvent rdf:type owl:Class ;
+              rdfs:subClassOf :ClientEvent ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasCondition ;
+                                owl:allValuesFrom xsd:string
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasConditionTemporality ;
+                                owl:allValuesFrom :CL-Temporality
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :atOrganization ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Organization>
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasStatusStr ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onDataRange xsd:string
+                              ] ;
+              term:description """
+A MedicalEvent is used to describe client medical events. A separate medical event would be created for each medical problem, test, visit, etc. 
+
+MedicalEvent is a subclass of ClientEvent and adds the following properties:
+• hasCondition: a string value describing any condition of the client
+• hasConditionTemporality: defines whether the condition is temporary, permanent, etc.
+• atOrganization: identifies the organization where the event took place, if any.
+• hasAddress: the address where the event took place.
+• hasStatusStr: specifies any type of status information
+"""^^xsd:string ;
+              rdfs:label "Medical Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#MilitaryEvent
+:MilitaryEvent rdf:type owl:Class ;
+               rdfs:subClassOf :EmploymentEvent ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :branch ;
+                                 owl:allValuesFrom :CL-MilitaryBranch
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :atOrganization ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Organization>
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasStatus ;
+                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :CL-MilitaryStatus
+                               ] ;
+               term:description """
+A MilitaryEvent is used to describe a client’s military experiences. A separate military event would be created for each military experience of note. For example, change in rank, assignment to a new role, postings, etc. 
+
+• atOrganization: specialized to being canadianArmedForces.
+• org:holds: specialized to being a military post. (TBU)
+• hasStatus: specialized to being military status.
+• branch: the branch of the military their post is in.
+"""^^xsd:string ;
+               rdfs:label "Military Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#NameEvent
+:NameEvent rdf:type owl:Class ;
+           rdfs:subClassOf :ClientEvent ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasCause ;
+                             owl:allValuesFrom :CL-NameCause
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasCauseComment ;
+                             owl:allValuesFrom xsd:string
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty <https://schema.org/additionalName> ;
+                             owl:allValuesFrom xsd:string
+                           ] ;
+           term:description """
+A NameEvent captures the change of a client’s name. It has the following properties:
+
+• schema:givenName: new given (first) name.
+• schema:additionalName: new additional (middle) names.
+• schema:familyName: new family (last) name.
+• hasCause: identifies the cause/reason for the name change.
+• hasCauseComment: additional information on the reason for the name change.
+"""^^xsd:string ;
+           rdfs:label "Name Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#Need
+:Need rdf:type owl:Class ;
+      rdfs:subClassOf owl:Thing .
+
+
+###  http://helpseeker.co/compass#NeedSatisfier
+:NeedSatisfier rdf:type owl:Class ;
+               rdfs:subClassOf owl:Thing ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :changes ;
+                                 owl:allValuesFrom :ClientState
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasImpact ;
+                                 owl:allValuesFrom xsd:string
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasType ;
+                                 owl:allValuesFrom xsd:string
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasCode> ;
+                                 owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#Code>
+                               ] ;
+               term:description """
+Need satisfiers are ‘havings’ (tangibles or intangibles that can be possessed), ‘doings’(personal or collective actions, e..g., counselling, group therapy sessions, nursing care) and ‘interactings’/”settings” / “facilities” that mediate or ensure the fulfillment of a need.
+
+• changes links to instances of ClientState that specify the client states changed by the satisfier
+• hasType identifes the type of satisfier, i.e., “Violator”, “Pseudo”, “Inhibiting”, “Singular”, “Synergistic”
+• hasImpact: specifies the level of belief that the good or service will satisfy the need
+• hasCode: specifies zero or more codes, created by various organizations, to identify a type of client status.
+"""^^xsd:string ;
+               rdfs:label "Need Satisfier"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#NeedSatisfierProvision
+:NeedSatisfierProvision rdf:type owl:Class ;
+                        rdfs:subClassOf owl:Thing ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :forClient ;
+                                          owl:allValuesFrom :Client
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :hasEndTime ;
+                                          owl:allValuesFrom xsd:string
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :hasLocation ;
+                                          owl:allValuesFrom xsd:string
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :hasNote ;
+                                          owl:allValuesFrom xsd:string
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :hasStartTime ;
+                                          owl:allValuesFrom xsd:string
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :inQuantity ;
+                                          owl:allValuesFrom xsd:string
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :withNeedSatisfier ;
+                                          owl:allValuesFrom :NeedSatisfier
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasDescription> ;
+                                          owl:allValuesFrom xsd:string
+                                        ] ;
+                        term:description """
+The need satisfier provision links together occurrences of needs, need satisfiers, and the services that provided the need satisfiers.
+
+• forClient: identifies the client for which this need satisfier is provided
+• withNeedSatisfier: one or more satisfiers that are provided
+• hasDescription: a description provided by the need satisfier provider
+"""^^xsd:string ;
+                        rdfs:label "Need Satisfier Provision"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#Organization
+:Organization rdf:type owl:Class ;
+              rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Organization> ,
+                              owl:Thing ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasFunding ;
+                                owl:allValuesFrom :Funding
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasLanguage ;
+                                owl:allValuesFrom :CL-Language
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty <http://ontology.eil.utoronto.ca/tove/icontact#hasEmail> ;
+                                owl:allValuesFrom xsd:string
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty <http://ontology.eil.utoronto.ca/tove/icontact#hasOperatingHours> ;
+                                owl:allValuesFrom <http://ontology.eil.utoronto.ca/tove/icontact#HoursOfOperation>
+                              ] ;
+              term:description """
+The Compass Organization extends cids:Organization with funding information.
+
+• hasFunding: links to instances of Funding that specify the funding received by the organization.
+• hasLanguage: Language for the Organization.
+• hasEmail: Email for the Organization.
+• hasOperatingHours: Hours of operation for the Organization.
+"""^^xsd:string ;
+              rdfs:label "Organization"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#PersonState
+:PersonState rdf:type owl:Class ;
+             rdfs:subClassOf owl:Thing ;
+             term:description """
+A person state is the particular condition that someone is in at a specific time. Human states range from simple physiological states as feeling full / hungry to complex cognitive constructs, such as feeling successful in one’s chosen career.
+"""^^xsd:string ;
+             rdfs:label "Person State"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#Program
+:Program rdf:type owl:Class ;
+         rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Program> ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty <http://ontology.eil.utoronto.ca/tove/icontact#hasAddress> ;
+                           owl:allValuesFrom <http://ontology.eil.utoronto.ca/tove/icontact#Address>
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty <http://ontology.eil.utoronto.ca/tove/icontact#hasEmail> ;
+                           owl:allValuesFrom xsd:string
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty <http://ontology.eil.utoronto.ca/tove/icontact#hasOperatingHours> ;
+                           owl:allValuesFrom <http://ontology.eil.utoronto.ca/tove/icontact#HoursOfOperation>
+                         ] ;
+         term:description """
+The Program class extends cids:Program with an address field. This allows an organization to provide services at different locations.
+For example, a “health” service can set up multiple offices closer to its clients.
+
+• hasAddress: Address for the program.
+• hasEmail: Email for the program.
+• hasOperatingHours: Hours of operation for the program.
+"""^^xsd:string ;
+         rdfs:label "Program"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#RCMPEvent
+:RCMPEvent rdf:type owl:Class ;
+           rdfs:subClassOf :EmploymentEvent ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :branch ;
+                             owl:allValuesFrom :CL-RCMPBranch
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :atOrganization ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Organization>
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasStatus ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :CL-RCMPStatus
+                           ] ;
+           term:description """
+A RCMPEvent is used to describe a client’s RCMP experiences. A separate RCMP event would be created for each RCMP experience of note. For example, change in rank, assignment to a new role, postings, etc. 
+
+•	atOrganization: specialized to being rcmp.
+•	org:holds: specialized to being a RCMP post. (TBU)
+•	hasStatus: specialized to being RCMP status.
+•	branch: the branch of the RCMP their post is in.
+"""^^xsd:string ;
+           rdfs:label "RCMP Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#Referral
+:Referral rdf:type owl:Class ;
+          rdfs:subClassOf owl:Thing ;
+          rdfs:label "Referral"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#Risk
+:Risk rdf:type owl:Class ;
+      rdfs:subClassOf owl:Thing ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasLikelihoodScore ;
+                        owl:allValuesFrom xsd:string
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasRiskFactor ;
+                        owl:allValuesFrom :RiskFactor
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasType ;
+                        owl:allValuesFrom xsd:string
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :inducesState ;
+                        owl:allValuesFrom :ClientState
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasCode> ;
+                        owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#Code>
+                      ] ;
+      term:description """
+Risk captures the uncertainty with respect to client states, e.g., risk of being homeless, risk of being unemployed, and the risk of being a victim of sexual exploitation. (Life events materialize a client’s risks or increase/decrease its likelihood of materializing. Losing one’s job materializes the risk of being unemployed, the new client state is “is unemployed”.)
+
+• hasRiskFactor links to instances of type RiskFactor that specify the associated risk factor
+• inducesState links to instances of type ClientState that specify what client states the risk induces
+• hasType specifies the type of risk, e.g.,  private, or public
+• hasCode: specifies zero or more codes, created by various organizations, to identify a type of risk.
+"""^^xsd:string .
+
+
+###  http://helpseeker.co/compass#RiskEvent
+:RiskEvent rdf:type owl:Class ;
+           rdfs:subClassOf :ClientEvent ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :causedBy ;
+                             owl:allValuesFrom :Event
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :eventType ;
+                             owl:allValuesFrom :CL-RiskEventType
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasStatusStr ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onDataRange xsd:string
+                           ] ;
+           term:description """
+A RiskEvent captures the occurrence of a client being at risk.
+
+As a subclass of ClientEvent it captures the client, time interval and location, plus the following additional properties:
+• hasStatus: the status of the event, for now is simply a string.
+• eventType: is the type of risk event constrained to being and instance of the code list CL-RiskEventType.
+• causedBy: Identifies zero or more events that may have caused this risk, for example a loss of employment even may lead to a risk of homelessness.
+"""^^xsd:string ;
+           rdfs:label "Risk Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#RiskFactor
+:RiskFactor rdf:type owl:Class ;
+            rdfs:subClassOf owl:Thing ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasType ;
+                              owl:allValuesFrom xsd:string
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasCode> ;
+                              owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#Code>
+                            ] ;
+            term:description """
+A risk factor is something that increases the risk of a person to develop or enter a condition or state, e.g. housing precarity increases a person’s risk of becoming homeless. 
+
+• hasType: specifies the type of risk factor, e.g., a physical individual risk factor, a psychosocial individual risk factor, a person’s individual risk factor
+• hasCode: specifies zero or more codes, created by various organizations, to identify a type of risk factor.
+"""^^xsd:string ;
+            rdfs:label "Risk Factor"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#Service
+:Service rdf:type owl:Class ;
+         rdfs:subClassOf <http://ontology.eil.utoronto.ca/cids/cids#Service> ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasFocus ;
+                           owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#Characteristic>
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasMode ;
+                           owl:allValuesFrom :CL-ServiceMode
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasRequirement ;
+                           owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#Characteristic>
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :providesSatisfier ;
+                           owl:allValuesFrom :NeedSatisfier
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :providedBy ;
+                           owl:minCardinality "1"^^xsd:nonNegativeInteger
+                         ] ;
+         term:description """
+The Compass Service class is an extension of the cids:Service class.
+
+• hasRequirement: Identifies characteristics that limit who can use the service, listed in Client taxonomy code list.
+• hasFocus: Identifies client characteristics that the service focuses on, listed in Client taxonomy code list.
+• hasMode: The mode with which the service is delivered.
+• providesSatisfier: The need satisfier this service provides.
+• providedBy: The organization provides this service.
+"""^^xsd:string ;
+         rdfs:label "Service"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#ServiceBarrier
+:ServiceBarrier rdf:type owl:Class ;
+                rdfs:subClassOf owl:Thing ;
+                rdfs:label "Service Barrier"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#ServiceEvent
+:ServiceEvent rdf:type owl:Class ;
+              rdfs:subClassOf :ClientEvent ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :forReferral ;
+                                owl:allValuesFrom :Referral
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :atOrganization ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Organization>
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasStatus ;
+                                owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass :CL-ServiceStatus
+                              ] ;
+              rdfs:label "Service Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#ServiceFailureEvent
+:ServiceFailureEvent rdf:type owl:Class ;
+                     rdfs:subClassOf :ClientEvent ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :forService ;
+                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                           owl:unionOf ( <http://ontology.eil.utoronto.ca/cids/cids#Activity>
+                                                                         <http://ontology.eil.utoronto.ca/cids/cids#Service>
+                                                                       )
+                                                         ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :hasFailureType ;
+                                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                                           owl:unionOf ( :ServiceBarrier
+                                                                         <http://ontology.eil.utoronto.ca/cids/cids#Activity>
+                                                                         <http://ontology.eil.utoronto.ca/cids/cids#Service>
+                                                                       )
+                                                         ]
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasCharacteristic> ;
+                                       owl:allValuesFrom <http://ontology.eil.utoronto.ca/cids/cids#Characteristic>
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasDescription> ;
+                                       owl:allValuesFrom xsd:string
+                                     ] ;
+                     term:description """
+ServiceFailureEvent represents an event triggered when there is a barrier that prevents clients from using a service they are otherwise eligible for. 
+
+• forService: the Service or Activity this failure event indicates cannot be used by a client
+• hasCharacteristic: the characteristic that caused the failure.
+• hasFailureType: the Service or Activity type that is preventing the stakeholder from using the service (e.g. Transportation, etc)
+• hasDescription: description of the failure type
+"""^^xsd:string ;
+                     rdfs:label "Service Failure Event"^^xsd:string .
+
+
+###  http://helpseeker.co/compass#ServiceOutcome
+:ServiceOutcome rdf:type owl:Class ;
+                rdfs:subClassOf owl:Thing .
+
+
+###  http://helpseeker.co/compass#Sex
+:Sex rdf:type owl:Class ;
+     rdfs:subClassOf owl:Thing ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasDescription> ;
+                       owl:allValuesFrom xsd:string
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#hasCode> ;
+                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                       owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Code>
+                     ] .
+
+
+###  http://helpseeker.co/compass#StakeholderEvent
+:StakeholderEvent rdf:type owl:Class ;
+                  rdfs:subClassOf :Event ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <http://ontology.eil.utoronto.ca/cids/cids#forStakeholder> ;
+                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                    owl:onClass <http://ontology.eil.utoronto.ca/cids/cids#Stakeholder>
+                                  ] ;
+                  term:description """
+The cids:Stakeholder class is a subclass of an Organization or Person and identifies a person or organization required to answer the above competency questions. 
+The use cases include competency questions such as: 
+•	How many users interacted with service?
+•	How long did #6 stay in counselling?
+•	How are people looking for help?
+
+The StakeholderEvent captures events performed by stakeholders.
+
+•	forStakeholder: the stakeholder that created this Event instance.
+"""^^xsd:string ;
+                  rdfs:label "Stakeholder Event"^^xsd:string .
+
+
+###  http://ontology.eil.utoronto.ca/5087/1/Activity/State
+<http://ontology.eil.utoronto.ca/5087/1/Activity/State> rdf:type owl:Class .
+
+
+###  http://ontology.eil.utoronto.ca/5087/2/City/CityAdministrativeArea
+<http://ontology.eil.utoronto.ca/5087/2/City/CityAdministrativeArea> rdf:type owl:Class .
+
+
+###  http://org.semanticweb.owlapi/error#Error1
+<http://org.semanticweb.owlapi/error#Error1> rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://helpseeker.co/compass#HelpSeeker
+:HelpSeeker rdf:type owl:NamedIndividual ,
+                     :Organization ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty [ owl:inverseOf :hasOrganization
+                                      ] ;
+                       owl:someValuesFrom :HelpSeekerCode
+                     ] .
+
+
+###  http://helpseeker.co/compass#agender
+:agender rdf:type owl:NamedIndividual ,
+                  :CL-Gender .
+
+
+###  http://helpseeker.co/compass#airForce
+:airForce rdf:type owl:NamedIndividual ,
+                   :CL-MilitaryBranch .
+
+
+###  http://helpseeker.co/compass#ally
+:ally rdf:type owl:NamedIndividual ,
+               :CL-Gender .
+
+
+###  http://helpseeker.co/compass#army
+:army rdf:type owl:NamedIndividual ,
+               :CL-MilitaryBranch .
+
+
+###  http://helpseeker.co/compass#arrest
+:arrest rdf:type owl:NamedIndividual ,
+                 :CL-JusticeSystemEventType .
+
+
+###  http://helpseeker.co/compass#asexual
+:asexual rdf:type owl:NamedIndividual ,
+                  :CL-Gender .
+
+
+###  http://helpseeker.co/compass#bachelorAppliedScience
+:bachelorAppliedScience rdf:type owl:NamedIndividual ,
+                                 :CL-EducationType .
+
+
+###  http://helpseeker.co/compass#bachelorArts
+:bachelorArts rdf:type owl:NamedIndividual ,
+                       :CL-EducationType .
+
+
+###  http://helpseeker.co/compass#bachelorScience
+:bachelorScience rdf:type owl:NamedIndividual ,
+                          :CL-EducationType .
+
+
+###  http://helpseeker.co/compass#beginIncarceration
+:beginIncarceration rdf:type owl:NamedIndividual ,
+                             :CL-JusticeSystemEventType .
+
+
+###  http://helpseeker.co/compass#beginParole
+:beginParole rdf:type owl:NamedIndividual ,
+                      :CL-JusticeSystemEventType .
+
+
+###  http://helpseeker.co/compass#beginSentence
+:beginSentence rdf:type owl:NamedIndividual ,
+                        :CL-JusticeSystemEventType .
+
+
+###  http://helpseeker.co/compass#bigender
+:bigender rdf:type owl:NamedIndividual ,
+                   :CL-Gender .
+
+
+###  http://helpseeker.co/compass#bisexual
+:bisexual rdf:type owl:NamedIndividual ,
+                   :CL-Gender .
+
+
+###  http://helpseeker.co/compass#charged
+:charged rdf:type owl:NamedIndividual ,
+                  :CL-JusticeSystemEventType .
+
+
+###  http://helpseeker.co/compass#complete
+:complete rdf:type owl:NamedIndividual ,
+                   :CL-EducationStatus ,
+                   :CL-EmploymentStatus .
+
+
+###  http://helpseeker.co/compass#completed
+:completed rdf:type owl:NamedIndividual ,
+                    :CL-ServiceStatus .
+
+
+###  http://helpseeker.co/compass#endIncarceration
+:endIncarceration rdf:type owl:NamedIndividual ,
+                           :CL-JusticeSystemEventType .
+
+
+###  http://helpseeker.co/compass#endParole
+:endParole rdf:type owl:NamedIndividual ,
+                    :CL-JusticeSystemEventType .
+
+
+###  http://helpseeker.co/compass#endSentence
+:endSentence rdf:type owl:NamedIndividual ,
+                      :CL-JusticeSystemEventType .
+
+
+###  http://helpseeker.co/compass#english
+:english rdf:type owl:NamedIndividual ,
+                  :CL-Languages .
+
+
+###  http://helpseeker.co/compass#female
+:female rdf:type owl:NamedIndividual ,
+                 :CL-Gender ,
+                 :CL-Sex .
+
+
+###  http://helpseeker.co/compass#fired
+:fired rdf:type owl:NamedIndividual ,
+                :CL-EmploymentStatus .
+
+
+###  http://helpseeker.co/compass#fluent
+:fluent rdf:type owl:NamedIndividual ,
+                 :CL-LanguageProficiency .
+
+
+###  http://helpseeker.co/compass#french
+:french rdf:type owl:NamedIndividual ,
+                 :CL-Languages .
+
+
+###  http://helpseeker.co/compass#gay
+:gay rdf:type owl:NamedIndividual ,
+              :CL-Gender .
+
+
+###  http://helpseeker.co/compass#gender_queer
+:gender_queer rdf:type owl:NamedIndividual ,
+                       :CL-Gender .
+
+
+###  http://helpseeker.co/compass#gender_variant
+:gender_variant rdf:type owl:NamedIndividual ,
+                         :CL-Gender .
+
+
+###  http://helpseeker.co/compass#in-person
+:in-person rdf:type owl:NamedIndividual ,
+                    :CL-ServiceMode .
+
+
+###  http://helpseeker.co/compass#inProgress
+:inProgress rdf:type owl:NamedIndividual ,
+                     :CL-EducationStatus ,
+                     :CL-ServiceStatus .
+
+
+###  http://helpseeker.co/compass#incomplete
+:incomplete rdf:type owl:NamedIndividual ,
+                     :CL-EducationStatus .
+
+
+###  http://helpseeker.co/compass#intersex
+:intersex rdf:type owl:NamedIndividual ,
+                   :CL-Gender .
+
+
+###  http://helpseeker.co/compass#layedOff
+:layedOff rdf:type owl:NamedIndividual ,
+                   :CL-EmploymentStatus .
+
+
+###  http://helpseeker.co/compass#lesbian
+:lesbian rdf:type owl:NamedIndividual ,
+                  :CL-Gender .
+
+
+###  http://helpseeker.co/compass#male
+:male rdf:type owl:NamedIndividual ,
+               :CL-Gender ,
+               :CL-Sex .
+
+
+###  http://helpseeker.co/compass#masterAppliedScience
+:masterAppliedScience rdf:type owl:NamedIndividual ,
+                               :CL-EducationType .
+
+
+###  http://helpseeker.co/compass#masterArts
+:masterArts rdf:type owl:NamedIndividual ,
+                     :CL-EducationType .
+
+
+###  http://helpseeker.co/compass#masterScience
+:masterScience rdf:type owl:NamedIndividual ,
+                        :CL-EducationType .
+
+
+###  http://helpseeker.co/compass#md
+:md rdf:type owl:NamedIndividual ,
+             :CL-EducationType .
+
+
+###  http://helpseeker.co/compass#native
+:native rdf:type owl:NamedIndividual ,
+                 :CL-LanguageProficiency .
+
+
+###  http://helpseeker.co/compass#navy
+:navy rdf:type owl:NamedIndividual ,
+               :CL-MilitaryBranch .
+
+
+###  http://helpseeker.co/compass#offline
+:offline rdf:type owl:NamedIndividual ,
+                  :CL-ServiceMode .
+
+
+###  http://helpseeker.co/compass#online
+:online rdf:type owl:NamedIndividual ,
+                 :CL-ServiceMode .
+
+
+###  http://helpseeker.co/compass#pangender
+:pangender rdf:type owl:NamedIndividual ,
+                    :CL-Gender .
+
+
+###  http://helpseeker.co/compass#pansexual
+:pansexual rdf:type owl:NamedIndividual ,
+                    :CL-Gender .
+
+
+###  http://helpseeker.co/compass#permanent
+:permanent rdf:type owl:NamedIndividual ,
+                    :CL-Temporality .
+
+
+###  http://helpseeker.co/compass#phd
+:phd rdf:type owl:NamedIndividual ,
+              :CL-EducationType .
+
+
+###  http://helpseeker.co/compass#phone
+:phone rdf:type owl:NamedIndividual ,
+                :CL-ServiceMode .
+
+
+###  http://helpseeker.co/compass#queer
+:queer rdf:type owl:NamedIndividual ,
+                :CL-Gender .
+
+
+###  http://helpseeker.co/compass#questioning
+:questioning rdf:type owl:NamedIndividual ,
+                      :CL-Gender .
+
+
+###  http://helpseeker.co/compass#quit
+:quit rdf:type owl:NamedIndividual ,
+               :CL-EmploymentStatus .
+
+
+###  http://helpseeker.co/compass#retired
+:retired rdf:type owl:NamedIndividual ,
+                  :CL-EmploymentStatus .
+
+
+###  http://helpseeker.co/compass#scheduled
+:scheduled rdf:type owl:NamedIndividual ,
+                    :CL-ServiceStatus .
+
+
+###  http://helpseeker.co/compass#secondaryDegree
+:secondaryDegree rdf:type owl:NamedIndividual ,
+                          :CL-EducationType .
+
+
+###  http://helpseeker.co/compass#selfEmployed
+:selfEmployed rdf:type owl:NamedIndividual ,
+                       :CL-EmploymentStatus .
+
+
+###  http://helpseeker.co/compass#temporary
+:temporary rdf:type owl:NamedIndividual ,
+                    :CL-Temporality .
+
+
+###  http://helpseeker.co/compass#transgender
+:transgender rdf:type owl:NamedIndividual ,
+                      :CL-Gender .
+
+
+###  http://helpseeker.co/compass#transsexual
+:transsexual rdf:type owl:NamedIndividual ,
+                      :CL-Gender .
+
+
+###  http://helpseeker.co/compass#two_spirit
+:two_spirit rdf:type owl:NamedIndividual ,
+                     :CL-Gender .
+
+
+###  http://helpseeker.co/compass#underEmployed
+:underEmployed rdf:type owl:NamedIndividual ,
+                        :CL-EmploymentStatus .
+
+
+###  http://helpseeker.co/compass#unemployed
+:unemployed rdf:type owl:NamedIndividual ,
+                     :CL-EmploymentStatus .
+
+
+[ owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger
+] .
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

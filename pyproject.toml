@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smile_base"
+version = "0.0.1"
+description = "SMILE Base"
+authors = [
+    { name = "Bart Gajderowicz", email = "bgajdero@gmail.com" },
+]
+requires-python = ">=3.9"
+readme = "README.md"
+
+
+[project.urls]
+repository = "https://github.com/csse-uoft/smile-base"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = [".*"]
+exclude = ["tests"]
+namespaces = false
+
+
+[tool.poetry]
+keywords = ['python']
+classifiers= [
+    "Development Status :: 1 - Planning",
+    "Topic :: Database",
+    "Intended Audience :: Education",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3.9",
+    "Environment :: Console",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+]
+
