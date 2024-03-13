@@ -14,7 +14,7 @@
 - For testing, make sure the username and password are set to `admin`
 - Create a new test repository. Go to [http://localhost:7200](http://localhost:7200)
   - Create new repository:
-    - Name the repository (Repository ID) as `smile2`
+    - Name the repository (Repository ID) as `smile`
     - Set context index to True *(checked).
     - Set query timeout to 45 second.
     - Set the `Throw exception on query timeout` checkmark to True (checked)
@@ -32,16 +32,10 @@ A few notes on configurting SMILE to connect to the database.
 
 # Run SMILE
 
-## Start nlp server
-In one terminal, run the following:
- - `conda activate PySmileARM`
- - `./src/corenlp/nlp_server.sh`
- - Open another terminal to run smile and Docker instances
-
 ## Start Flask
 In another terminal, run the following:
 #### Set Conda Environment
-- `conda activate PySmileARM`
+- `conda activate PySmileBase`
 
 
 # Troubleshooting

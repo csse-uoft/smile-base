@@ -18,7 +18,7 @@ repository = "https://github.com/csse-uoft/smile-base"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = [".*"]
+include = ["smiel_base", "smile_base.*"]
 exclude = ["tests"]
 namespaces = false
 
