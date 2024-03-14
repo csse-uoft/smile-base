@@ -1,5 +1,5 @@
 from config import config as CONFIG
-from pyscript.app.scripts.misc_lib import *
+from .scripts.misc_lib import *
 import tqdm
 
 

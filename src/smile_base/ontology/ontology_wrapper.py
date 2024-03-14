@@ -1,6 +1,6 @@
 from owlready2 import default_world
 from owlready2 import class_construct as owlclass, OneOf
-from pyscript.app.ontology.namespaces import compass, ic, geo, cids, org, time, schema, sch, activity, landuse_50872, i72, owl
+from .ontology.namespaces import compass, ic, geo, cids, org, time, schema, sch, activity, landuse_50872, i72, owl
 
 class OntologyWrapper:
     """

@@ -75,8 +75,7 @@ class Word(Hypothesis):
                 smile.hasTraceID:trace_id,
                 smile.hasContent:content,
                 smile.hasContentLabel:content_label,
-                # cls.relations['request']['pred']:request_id,
-            })
+                            })
 
         elif start is not None and end is not None:
             inst =  SPARQLDict._get(klass=cls.klass, props={
@@ -84,13 +83,11 @@ class Word(Hypothesis):
                 smile.hasContent:content,
                 smile.hasStart:start,
                 smile.hasEnd:end,
-                # cls.relations['request']['pred']:request_id,
-            })
+                            })
         elif content is not None:
             inst =  SPARQLDict._get(klass=cls.klass, props={
                 smile.hasTraceID:trace_id,
                 smile.hasContent:content,
-                # cls.relations['request']['pred']:request_id,
             })
 
         return cls(inst=inst) if inst else None
@@ -118,7 +115,6 @@ class Word(Hypothesis):
             smile.hasStart:start,
             smile.hasEnd:end,
             smile.hasCertainty:certainty,
-            # cls.relations['request']['pred']:request_id,
         })
 
         return cls(inst=inst) if inst else None

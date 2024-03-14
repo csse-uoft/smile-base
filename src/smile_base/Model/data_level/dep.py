@@ -63,7 +63,6 @@ class Dep(Hypothesis):
             smile.hasDepLabel       : dep,
             smile.hasSubjectWord    : subject_id,
             smile.hasObjectWord    : object_id,
-            # cls.relations['request']['pred']:request_id,
         })
         return cls(inst=inst) if inst else None
 
@@ -84,7 +83,6 @@ class Dep(Hypothesis):
             smile.hasSubjectWord    : subject_id,
             smile.hasObjectWord    : object_id,
             smile.hasCertainty      : certainty,
-            # cls.relations['request']['pred']:request_id,
         })
 
         return cls(inst=inst) if inst else None

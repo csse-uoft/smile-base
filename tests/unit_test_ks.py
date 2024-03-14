@@ -1,8 +1,8 @@
 from __main__ import *
 from ..Model.graph_node import GraphNode
 from .unit_test_extra import *
-# from pyscript.app.db_utils import smile, rdf_nm,  SPARQLDict
-from pyscript.app.db_utils import PropertyList, SPARQLDict, resolve_nm_for_ttl, resolve_nm_for_dict, Thing, smile
+# from .db_utils import smile, rdf_nm,  SPARQLDict
+from .db_utils import PropertyList, SPARQLDict, resolve_nm_for_ttl, resolve_nm_for_dict, Thing, smile
 
 import re
 class UnitTestNode(GraphNode):

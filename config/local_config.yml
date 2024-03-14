@@ -20,3 +20,4 @@ GRAPH_NAME : "http://smile"
 NM : "http://smile/#"
 PREFIX : 'smile'
 
+DB_INDEX_FIELDS: []

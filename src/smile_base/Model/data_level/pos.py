@@ -57,7 +57,6 @@ class Pos(Hypothesis):
             smile.hasTraceID    : trace_id,
             smile.hasTag        : pos_tag,
             smile.hasWords      : word_ids,
-            # cls.relations['request']['pred']:request_id,
         })
 
         return cls(inst=inst) if inst else None
@@ -78,7 +77,6 @@ class Pos(Hypothesis):
             smile.hasTag        : pos_tag,
             smile.hasWords      : word_ids,
             smile.hasCertainty  : certainty,
-            # cls.relations['request']['pred']:request_id,
         })
         return cls(inst=inst) if inst else None
 

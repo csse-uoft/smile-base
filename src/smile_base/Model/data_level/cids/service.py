@@ -2,7 +2,7 @@ import re, os
 from owlready2 import default_world, ObjectProperty, DataProperty, rdfs, Thing 
 from py2graphdb.config import config as CONFIG
 smile = default_world.get_ontology(CONFIG.NM)
-from pyscript.app.ontology.namespaces import ic, geo, cids, org, time, schema, sch, activity, landuse_50872, i72, oep, owl
+from ....ontology.namespaces import ic, geo, cids, org, time, schema, sch, activity, landuse_50872, i72, oep, owl
 with smile:
     from py2graphdb.Models.graph_node import GraphNode, SPARQLDict, _resolve_nm
     from py2graphdb.utils.db_utils import resolve_nm_for_dict, PropertyList
@@ -66,7 +66,6 @@ class Service(Hypothesis,cids.Service):
         inst =  SPARQLDict._get(klass=cls.klass, props={
             smile.hasTraceID   : trace_id,
             smile.hasPhrase     : phrase_id,
-            # cls.relations['request']['pred']:request_id,
         })
         return cls(inst=inst) if inst else None
 
@@ -83,7 +82,6 @@ class Service(Hypothesis,cids.Service):
             smile.hasTraceID   : trace_id,
             smile.hasPhrase     : phrase_id,
             smile.hasCertainty  : certainty,
-            # cls.relations['request']['pred']:request_id,
         })
         return cls(inst=inst) if inst else None
 

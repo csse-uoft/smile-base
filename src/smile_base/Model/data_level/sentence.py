@@ -69,7 +69,6 @@ class Sentence(Hypothesis):
             smile.hasContent    : content,
             smile.hasStart      : start,
             smile.hasEnd        : end,
-            # cls.relations['request']['pred']:request_id,
         })
         return cls(inst=inst) if inst else None
 
@@ -91,7 +90,6 @@ class Sentence(Hypothesis):
             smile.hasStart      : start,
             smile.hasEnd        : end,
             smile.hasCertainty  : certainty,
-            # cls.relations['request']['pred']:request_id,
         })
 
         return cls(inst=inst) if inst else None

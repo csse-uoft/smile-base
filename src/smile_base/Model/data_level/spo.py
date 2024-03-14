@@ -62,7 +62,6 @@ class Spo(Hypothesis):
             smile.hasSubject    : subject_id,
             smile.hasPredicate  : predicate_id,
             smile.hasObject     : object_id,
-            # cls.relations['request']['pred']:request_id,
         })
         return cls(inst=inst) if inst else None
 
@@ -83,7 +82,6 @@ class Spo(Hypothesis):
             smile.hasPredicate  : predicate_id,
             smile.hasObject     : object_id,
             smile.hasCertainty  : certainty,
-            # cls.relations['request']['pred']:request_id,
         })
         return cls(inst=inst) if inst else None
 

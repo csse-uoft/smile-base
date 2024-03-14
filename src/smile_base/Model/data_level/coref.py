@@ -65,7 +65,6 @@ class CoRef(Hypothesis):
             smile.hasTraceID:trace_id,
             smile.hasCoRefWord:coref_word_id,
             smile.hasRefWord:ref_word_id,
-            # cls.relations['request']['pred']:request_id,
         })
         return cls(inst=inst) if inst else None
 
@@ -86,7 +85,6 @@ class CoRef(Hypothesis):
             smile.hasCoRefWord:coref_word_id,
             smile.hasRefWord:ref_word_id,
             smile.hasCertainty:certainty,
-            # cls.relations['request']['pred']:request_id,
         })
 
         return cls(inst=inst) if inst else None

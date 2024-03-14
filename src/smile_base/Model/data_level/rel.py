@@ -68,7 +68,6 @@ class Rel(Hypothesis):
             smile.hasObject         : object_id,
             smile.hasSPO            : spo_id,
             smile.hasPredOntoRel    : predicate_onto_rel,
-            # cls.relations['request']['pred']:request_id,
         })
         return cls(inst=inst) if inst else None
 
@@ -92,7 +91,6 @@ class Rel(Hypothesis):
             smile.hasSPO            : spo_id,
             smile.hasPredOntoRel    : predicate_onto_rel,
             smile.hasCertainty      : certainty,
-            # cls.relations['request']['pred']:request_id,
         })
         return cls(inst=inst) if inst else None
 

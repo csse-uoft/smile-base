@@ -1,15 +1,13 @@
 from owlready2 import default_world, onto_path
-import os
-onto_path.append('./pyscript/app/ontology/ontology_cache/')
+import os, sys
+onto_path.append(os.path.dirname(__file__)+'/ontology_cache/')
 try:
     default_world.set_backend(filename='./db.sqlite')
 except:
     print("loaded???")
 print('Loading/Downloading ontologies, if the script stuck here, try re-run it.')
 
-# compass = default_world.get_ontology('https://github.com/csse-uoft/compass-ontology/releases/download/latest/compass.owl').load(reload=True)
 cids_url='cids.owl'
-# cids_url = 'http://ontology.commonapproach.org/owl/cids_v2.1.owl'
 cids = default_world.get_ontology(cids_url).load(reload=True)
 
 print('Ontology Loaded.')

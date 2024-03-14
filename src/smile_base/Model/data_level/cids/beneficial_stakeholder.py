@@ -2,7 +2,7 @@ import re, os
 from owlready2 import default_world, ObjectProperty, DataProperty, rdfs, Thing 
 from py2graphdb.config import config as CONFIG
 smile = default_world.get_ontology(CONFIG.NM)
-from pyscript.app.ontology.namespaces import ic, geo, cids, org, time, schema, sch, activity, landuse_50872, i72, owl
+from ....ontology.namespaces import ic, geo, cids, org, time, schema, sch, activity, landuse_50872, i72, owl
 
 with smile:
     from py2graphdb.Models.graph_node import GraphNode, SPARQLDict, _resolve_nm
@@ -45,49 +45,3 @@ class BeneficialStakeholder(Stakeholder,cids.BeneficialStakeholder):
         return self.klass or ''
 
 
-    # @classmethod
-    # def find(cls, trace_id, phrase_id, request_id=None):
-    #     """Find an existing Ner query with the given parameters and return it.
-
-    #     :param trace_id: the trace id for this phrase
-    #     :param phrase: the phrase query that is associated with the ner query in search
-    #     :return: found/generated phrase query
-    #     """
-    #     inst =  SPARQLDict._get(klass=cls.klass, props={
-    #         smile.hasTraceID   : trace_id,
-    #         smile.hasPhrase     : phrase_id,
-    #         # cls.relations['request']['pred']:request_id,
-    #     })
-    #     return cls(inst=inst) if inst else None
-
-    # @classmethod
-    # def generate(cls,  trace_id, phrase_id, certainty=0, request_id=None):
-    #     """Generate a new Ner query with the given parameters and return it.
-
-    #     :param trace_id: the trace id for this phrase
-    #     :param phrase: the phrase query that is associated with the ner query in search
-    #     :param certainty: certainty level in float
-    #     :return: found/generated phrase query
-    #     """
-    #     inst =  SPARQLDict._add(klass=cls.klass, props={
-    #         smile.hasTraceID   : trace_id,
-    #         smile.hasPhrase     : phrase_id,
-    #         smile.hasCertainty  : certainty,
-    #         # cls.relations['request']['pred']:request_id,
-    #     })
-    #     return cls(inst=inst) if inst else None
-
-    # @classmethod
-    # def find_generate(cls, trace_id, phrase_id, request_id=None, certainty=0):
-    #     """Try to find and return an existing ner query with the given parameters.
-    #      If there is none, generate a new query and return it.
-
-    #     :param trace_id: the trace id for this phrase
-    #     :param phrase: the phrase query that is associated with the ner query in search
-    #     :param certainty: certainty level in float
-    #     :return: found/generated phrase query
-    #     """
-    #     node = cls.find( trace_id=trace_id,phrase_id=phrase_id, request_id=request_id)
-    #     if node is None:
-    #         node = cls.generate( trace_id=trace_id,request_id=request_id, phrase_id=phrase_id, certainty=certainty)
-    #     return node

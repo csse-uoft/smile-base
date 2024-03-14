@@ -37,8 +37,8 @@ with smile:
     from pprint import pprint
     import re
     import numpy as np
-    from pyscript.app.db_utils import global_db
-    from pyscript.app.db_utils import escape_str, get_instance, get_blank_instance, logger, global_db, \
+    from .db_utils import global_db
+    from .db_utils import escape_str, get_instance, get_blank_instance, logger, global_db, \
         global_db_indexed, update_db_index, PropertyList, ObjectDict, get_instance_label, row_to_turtle, \
         smile, rdf_nm, resolve_nm_for_ttl, ObjectDict, PropertyList, encode_inst,\
         SPARQLDict
