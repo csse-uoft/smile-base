@@ -9,6 +9,9 @@ with smile:
     from py2graphdb.utils.db_utils import resolve_nm_for_dict, PropertyList
 
     from .ontology.extra import *
+    
+    from .Model.knowledge_source.knowledge_source import KnowledgeSource
+    
     from .Model.controller.ks import Ks
     from .Model.controller.ks_ar import KSAR
     from .Model.controller.ks_input import KsInput

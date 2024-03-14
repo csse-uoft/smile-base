@@ -3,9 +3,9 @@ from owlready2 import default_world, ObjectProperty, DataProperty, rdfs, Thing
 from py2graphdb.config import config as CONFIG
 smile = default_world.get_ontology(CONFIG.NM)
 with smile:
+    from ...ontology.extra import *
     from py2graphdb.Models.graph_node import GraphNode, SPARQLDict, _resolve_nm
     from py2graphdb.utils.db_utils import resolve_nm_for_dict, PropertyList
-
 class Hypothesis(GraphNode):
     """
     A db Model class that defines the base schema for all hypotheses.
