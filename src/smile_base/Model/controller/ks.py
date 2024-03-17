@@ -52,79 +52,79 @@ class Ks(GraphNode):
 
 
     ALL_KS_FORMATS = {
-        'Parse/Query': ['ParseQuery', False, ['Query'], ['Text']], #SearchTextGraph
-        'Search Text Graph': [None, False, ['Text_Field'], ['Text_Field']], #SearchTextGraph
-        'Search Ontology Graph': [None, False, ['Ner'], ['Rel']], #SearchOntologyGraph
-        # 'Query Input': ['QueryInput', ['Query'], ['Text']],
-        'Parse/Tokenize': ['ParseTokenize', False, ["Text"], ["Word", "Pos", "Dep", "CoRef"]],
-        'QA-0 (Text)(Organization)': ['Qa0Ner', False, ["Text"], ["Organization"]],
-        'QA-0 (Sentence)(Organization)': ['Qa0Ner', False, ["Sentence"], ["Organization"]],
-        'QA-0 (Text)(Program)': ['Qa0Ner', False, ["Text"], ["Program"]],
-        'QA-0 (Sentence)(Program)': ['Qa0Ner', False, ["Sentence"], ["Program"]],
-        'QA-0 (Outcome)': ['Qa0Ner', False, ["Text"], ["Outcome"]],
-        'QA-0 (Outcome)': ['Qa0Ner', False, ["Sentence"], ["Outcome"]],
-        'QA-0 (BeneficialStakeholder)': ['Qa0Ner', False, ["Text"], ["BeneficialStakeholder"]],
-        'QA-0 (BeneficialStakeholder)': ['Qa0Ner', False, ["Sentence"], ["BeneficialStakeholder"]],
-        'QA-0 (CatchmentArea)': ['Qa0Ner', False, ["Text"], ["CatchmentArea"]],
-        'QA-0 (CatchmentArea)': ['Qa0Ner', False, ["Sentence"], ["CatchmentArea"]],
+        # 'Parse/Query': ['ParseQuery', False, ['Query'], ['Text']], #SearchTextGraph
+        # 'Search Text Graph': [None, False, ['Text_Field'], ['Text_Field']], #SearchTextGraph
+        # 'Search Ontology Graph': [None, False, ['Ner'], ['Rel']], #SearchOntologyGraph
+        # # 'Query Input': ['QueryInput', ['Query'], ['Text']],
+        # 'Parse/Tokenize': ['ParseTokenize', False, ["Text"], ["Word", "Pos", "Dep", "CoRef"]],
+        # 'QA-0 (Text)(Organization)': ['Qa0Ner', False, ["Text"], ["Organization"]],
+        # 'QA-0 (Sentence)(Organization)': ['Qa0Ner', False, ["Sentence"], ["Organization"]],
+        # 'QA-0 (Text)(Program)': ['Qa0Ner', False, ["Text"], ["Program"]],
+        # 'QA-0 (Sentence)(Program)': ['Qa0Ner', False, ["Sentence"], ["Program"]],
+        # 'QA-0 (Outcome)': ['Qa0Ner', False, ["Text"], ["Outcome"]],
+        # 'QA-0 (Outcome)': ['Qa0Ner', False, ["Sentence"], ["Outcome"]],
+        # 'QA-0 (BeneficialStakeholder)': ['Qa0Ner', False, ["Text"], ["BeneficialStakeholder"]],
+        # 'QA-0 (BeneficialStakeholder)': ['Qa0Ner', False, ["Sentence"], ["BeneficialStakeholder"]],
+        # 'QA-0 (CatchmentArea)': ['Qa0Ner', False, ["Text"], ["CatchmentArea"]],
+        # 'QA-0 (CatchmentArea)': ['Qa0Ner', False, ["Sentence"], ["CatchmentArea"]],
 
-        # 'QA-0 (Organization)': ['Qa0Ner_Organization', False, ["Text", "Sentence"], ["Organization"]],
-        # 'QA-0 (Program)': ['Qa0Ner_Program', False, ["Text", "Sentence"], ["Program"]],
-        # 'QA-0 (Outcome)': ['Qa0Ner_Outcome', False, ["Text", "Sentence"], ["Outcome"]],
-        # 'QA-0 (Client)': ['Qa0Ner_Client', False, ["Text", "Sentence"], ["Client"]],
-        # 'QA-0 (BeneficialStakeholder)': ['Qa0Ner_BeneficialStakeholder', False, ["Text", "Sentence"], ["BeneficialStakeholder"]],
-        # 'QA-0 (CatchmentArea)': ['Qa0Ner_CatchmentArea', False, ["Text", "Sentence"], ["CatchmentArea"]],
+        # # 'QA-0 (Organization)': ['Qa0Ner_Organization', False, ["Text", "Sentence"], ["Organization"]],
+        # # 'QA-0 (Program)': ['Qa0Ner_Program', False, ["Text", "Sentence"], ["Program"]],
+        # # 'QA-0 (Outcome)': ['Qa0Ner_Outcome', False, ["Text", "Sentence"], ["Outcome"]],
+        # # 'QA-0 (Client)': ['Qa0Ner_Client', False, ["Text", "Sentence"], ["Client"]],
+        # # 'QA-0 (BeneficialStakeholder)': ['Qa0Ner_BeneficialStakeholder', False, ["Text", "Sentence"], ["BeneficialStakeholder"]],
+        # # 'QA-0 (CatchmentArea)': ['Qa0Ner_CatchmentArea', False, ["Text", "Sentence"], ["CatchmentArea"]],
 
-        # 'QA-1 (NER)': ['Qa1Ner', False, ["Text", "Sentence", "Ner"], ["Ner", "Phrase"]],
-        'QA-1 (Organization,Text)(Program)': ['Qa1Ner', False, ["Text", "Organization"], ["Program"]],
-        'QA-1 (Organization,Sentence)(Program)': ['Qa1Ner', False, ["Sentence", "Organization"], ["Program"]],
-        'QA-1 (Organization,Text)(BeneficialStakeholder)': ['Qa1Ner', False, ["Text", "Organization"], ["BeneficialStakeholder"]],
-        'QA-1 (Organization,Sentence)(BeneficialStakeholder)': ['Qa1Ner', False, ["Sentence", "Organization"], ["BeneficialStakeholder"]],
-        # 'QA-1 (Organization)(Client)': ['Qa1Ner_Organization_Client', False, ["Text", "Sentence", "Organization"], ["Client"]],
-        # 'QA-1 (Organization)(BeneficialStakeholder)': ['Qa1Ner_Organization_BeneficialStakeholder', False, ["Text", "Sentence", "Organization"], ["BeneficialStakeholder"]],
-        # 'QA-1 (Organization)(Outcome)': ['Qa1Ner_Organization_Outcome', False, ["Text", "Sentence", "Organization"], ["Outcome"]],
-        # 'QA-1 (Organization)(CatchmentArea)': ['Qa1Ner_Organization_CatchmentArea', False, ["Text", "Sentence", "Organization"], ["CatchmentArea"]],
-
-
-        'QA-1 (Program,Text)(Organization)': ['Qa1Ner', False, ["Text", "Program"], ["Organization"]],
-        'QA-1 (Program,Sentence)(Organization)': ['Qa1Ner', False, ["Sentence", "Program"], ["Organization"]],
-        'QA-1 (Program,Text)(BeneficialStakeholder)': ['Qa1Ner', False, ["Text", "Program"], ["BeneficialStakeholder"]],
-        'QA-1 (Program,Sentence)(BeneficialStakeholder)': ['Qa1Ner', False, ["Sentence", "Program"], ["BeneficialStakeholder"]],
-        # 'QA-1 (Program)(Client)': ['Qa1Ner_Program_Client', False, ["Text", "Sentence", "Program"], ["Client"]],
-        # 'QA-1 (Program)(BeneficialStakeholder)': ['Qa1Ner_Program_BeneficialStakeholder', False, ["Text", "Sentence", "Program"], ["BeneficialStakeholder"]],
-        # 'QA-1 (Program)(Outcome)': ['Qa1Ner_Program_Outcome', False, ["Text", "Sentence", "Program"], ["Outcome"]],
-        # 'QA-1 (Program)(CatchmentArea)': ['Qa1Ner_Program_CatchmentArea', False, ["Text", "Sentence", "Program"], ["CatchmentArea"]],
+        # # 'QA-1 (NER)': ['Qa1Ner', False, ["Text", "Sentence", "Ner"], ["Ner", "Phrase"]],
+        # 'QA-1 (Organization,Text)(Program)': ['Qa1Ner', False, ["Text", "Organization"], ["Program"]],
+        # 'QA-1 (Organization,Sentence)(Program)': ['Qa1Ner', False, ["Sentence", "Organization"], ["Program"]],
+        # 'QA-1 (Organization,Text)(BeneficialStakeholder)': ['Qa1Ner', False, ["Text", "Organization"], ["BeneficialStakeholder"]],
+        # 'QA-1 (Organization,Sentence)(BeneficialStakeholder)': ['Qa1Ner', False, ["Sentence", "Organization"], ["BeneficialStakeholder"]],
+        # # 'QA-1 (Organization)(Client)': ['Qa1Ner_Organization_Client', False, ["Text", "Sentence", "Organization"], ["Client"]],
+        # # 'QA-1 (Organization)(BeneficialStakeholder)': ['Qa1Ner_Organization_BeneficialStakeholder', False, ["Text", "Sentence", "Organization"], ["BeneficialStakeholder"]],
+        # # 'QA-1 (Organization)(Outcome)': ['Qa1Ner_Organization_Outcome', False, ["Text", "Sentence", "Organization"], ["Outcome"]],
+        # # 'QA-1 (Organization)(CatchmentArea)': ['Qa1Ner_Organization_CatchmentArea', False, ["Text", "Sentence", "Organization"], ["CatchmentArea"]],
 
 
-        'Text To Sentences': ['TextToSentences', False, ["Text"], ["Sentence","Word"]],
-        'Find_HighSP_low_NERs': ['Find_HighSP_low_NERs', False, ['Sentence'], ['Ner']],
-        'Find_LowSP': ['Find_LowSP', False, ['Sentence'], ['Ner']],
-        # 'QA-0 (Phrase)': ['Qa0Phrase', False, ["Text"], ["Phrase"]],
-        # "NERx (NER)": [None, False, ["Text"], ["Ner"]],
-        # "AllenNLP (NER)": ['NerAllenNer', False, ["Text"], ["Ner"]],
-        # "Stanza (NER)": ['NerStanzaNer', False, ["Text"], ["Ner"]],
-        # "Spacy Rob (NER)": ['NerSpacyRobNer', False, ["Text"], ["Ner"]],
-        # "Spacy Trad (NER)": ['NerSpacyTradNer', False, ["Text"], ["Ner"]],
-        # "NERx (Phrase)": [None, False, ["Text"], ["Phrase"]],
-        # "CoRef (Words)": [None, False, ["CoRef", "Word"], ["Word"]], #CoRefWord
-        # "CoRef (SPO)": ['CorefSpo', False, ["Spo"], ["Spo"]],
-        # "Token-to-Keyword": ['TokenToKeyword', ["Word"], ["Taxonomy"]],
-        # "Keyword Match-to-Phrase": [None, False, ["Word"], ["Phrase"]],
-        # "Keyword-to-NER": ['KeywordToNer', False, ["Phrase"], ["Ner"]], #
-        # "Parse-Phrase": ['ParsePhrase', False, ["Phrase"], ["Word"]],
-        # "Parse-List": [None, False, ["Phrase"], ["Phrase"]],
-        # "R^P": [None, True, ["Word"], ["Phrase"]],
-        # "R^T": ["RT", True, ["Word", "Pos", "Dep", "CoRef"], ["Spo"]], # RT
-        # "Expand REL Terms": [None, False ,["Phrase"], ["Rel"]],
-        # "R^E": [None, True, ["Spo"], ["Ner"]],  # 'RE'
-        # "QA-1 (Phrase)": [None, False, ["Ner"], ["Phrase"]],   #'Qa1Phrase'
-        # "QA-1 (NER)": [None, True, ["Ner"], ["Ner"]],     #'Qa1Ner'
-        # "QA-1 (REL)": [None, True, ["Ner"], ["Rel"]],
-        # "QA-2 (NER)": [None, True, ["Ner"], ["Ner"]],
-        # "QA-2 (Phrase)": [None, True, ["Ner"], ["Phrase"]],
-        # "QA-2 (REL)": [None, True, ["Rel", "Ner"], ["Ner"]],
-        # "NER-to-REL": [None, True, ["Ner", "Rel"], ["Ner"]],
-        # "Text-to-Phrase": [None, True, ['CoRef','Dep'], ['Phrase']], #TextToPhrase
+        # 'QA-1 (Program,Text)(Organization)': ['Qa1Ner', False, ["Text", "Program"], ["Organization"]],
+        # 'QA-1 (Program,Sentence)(Organization)': ['Qa1Ner', False, ["Sentence", "Program"], ["Organization"]],
+        # 'QA-1 (Program,Text)(BeneficialStakeholder)': ['Qa1Ner', False, ["Text", "Program"], ["BeneficialStakeholder"]],
+        # 'QA-1 (Program,Sentence)(BeneficialStakeholder)': ['Qa1Ner', False, ["Sentence", "Program"], ["BeneficialStakeholder"]],
+        # # 'QA-1 (Program)(Client)': ['Qa1Ner_Program_Client', False, ["Text", "Sentence", "Program"], ["Client"]],
+        # # 'QA-1 (Program)(BeneficialStakeholder)': ['Qa1Ner_Program_BeneficialStakeholder', False, ["Text", "Sentence", "Program"], ["BeneficialStakeholder"]],
+        # # 'QA-1 (Program)(Outcome)': ['Qa1Ner_Program_Outcome', False, ["Text", "Sentence", "Program"], ["Outcome"]],
+        # # 'QA-1 (Program)(CatchmentArea)': ['Qa1Ner_Program_CatchmentArea', False, ["Text", "Sentence", "Program"], ["CatchmentArea"]],
+
+
+        # 'Text To Sentences': ['TextToSentences', False, ["Text"], ["Sentence","Word"]],
+        # 'Find_HighSP_low_NERs': ['Find_HighSP_low_NERs', False, ['Sentence'], ['Ner']],
+        # 'Find_LowSP': ['Find_LowSP', False, ['Sentence'], ['Ner']],
+        # # 'QA-0 (Phrase)': ['Qa0Phrase', False, ["Text"], ["Phrase"]],
+        # # "NERx (NER)": [None, False, ["Text"], ["Ner"]],
+        # # "AllenNLP (NER)": ['NerAllenNer', False, ["Text"], ["Ner"]],
+        # # "Stanza (NER)": ['NerStanzaNer', False, ["Text"], ["Ner"]],
+        # # "Spacy Rob (NER)": ['NerSpacyRobNer', False, ["Text"], ["Ner"]],
+        # # "Spacy Trad (NER)": ['NerSpacyTradNer', False, ["Text"], ["Ner"]],
+        # # "NERx (Phrase)": [None, False, ["Text"], ["Phrase"]],
+        # # "CoRef (Words)": [None, False, ["CoRef", "Word"], ["Word"]], #CoRefWord
+        # # "CoRef (SPO)": ['CorefSpo', False, ["Spo"], ["Spo"]],
+        # # "Token-to-Keyword": ['TokenToKeyword', ["Word"], ["Taxonomy"]],
+        # # "Keyword Match-to-Phrase": [None, False, ["Word"], ["Phrase"]],
+        # # "Keyword-to-NER": ['KeywordToNer', False, ["Phrase"], ["Ner"]], #
+        # # "Parse-Phrase": ['ParsePhrase', False, ["Phrase"], ["Word"]],
+        # # "Parse-List": [None, False, ["Phrase"], ["Phrase"]],
+        # # "R^P": [None, True, ["Word"], ["Phrase"]],
+        # # "R^T": ["RT", True, ["Word", "Pos", "Dep", "CoRef"], ["Spo"]], # RT
+        # # "Expand REL Terms": [None, False ,["Phrase"], ["Rel"]],
+        # # "R^E": [None, True, ["Spo"], ["Ner"]],  # 'RE'
+        # # "QA-1 (Phrase)": [None, False, ["Ner"], ["Phrase"]],   #'Qa1Phrase'
+        # # "QA-1 (NER)": [None, True, ["Ner"], ["Ner"]],     #'Qa1Ner'
+        # # "QA-1 (REL)": [None, True, ["Ner"], ["Rel"]],
+        # # "QA-2 (NER)": [None, True, ["Ner"], ["Ner"]],
+        # # "QA-2 (Phrase)": [None, True, ["Ner"], ["Phrase"]],
+        # # "QA-2 (REL)": [None, True, ["Rel", "Ner"], ["Ner"]],
+        # # "NER-to-REL": [None, True, ["Ner", "Rel"], ["Ner"]],
+        # # "Text-to-Phrase": [None, True, ['CoRef','Dep'], ['Phrase']], #TextToPhrase
     }
 
 
