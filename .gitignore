@@ -7,7 +7,6 @@ tmp
 libs
 corenlp/stanford*
 pyscript/app/scripts/corenlp/stanford*
-init_*.py
 tokenizers
 pyscript/app/templates/graph.pdf
 pyscript/app/templates/org_dynamic_graph_view*
