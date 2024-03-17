@@ -21,6 +21,8 @@ where = ["src"]
 include = ["smile_base", "smile_base.*"]
 exclude = ["tests"]
 
+[tool.setuptools.package-data]
+"*" = ["*.*"]
 
 [tool.poetry]
 keywords = ['python']

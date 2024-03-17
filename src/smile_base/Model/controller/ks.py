@@ -141,30 +141,35 @@ class Ks(GraphNode):
         """
 
         with smile:
-            for ks_name, fields in cls.ALL_KS_FORMATS.items():
-                py_name = fields[0]
-                group_input = fields[1]
-                input_levels = fields[2]
-                output_levels = fields[3]
-                print(ks_name, "\t\t", py_name, "\t", group_input, "\t", input_levels, "\t", output_levels)
+            for ks_name in cls.ALL_KS_FORMATS.keys():
+                cls.initialize_ks(ks_name)
 
-                print(cls)
-                ks_query = cls()
-                ks_query.name=ks_name
-                ks_query.py_name=py_name
-                ks_query.group_input=group_input
-                # ks_query.save()
-                for j, input_level in enumerate(input_levels):
-                    ks_query.inputs = input_level
-                    ks_input_query = KsInput(keep_db_in_synch=True)
-                    ks_input_query.ks=ks_query.id
-                    ks_input_query.data_level=input_level
-                    # ks_input_query.save()
-                for k, output_level in enumerate(output_levels):
-                    ks_query.outputs = output_level
-                    ks_output_query = KsOutput(keep_db_in_synch=True)
-                    ks_output_query.ks=ks_query.id
-                    ks_output_query.data_level=output_level
-                    # ks_output_query.save()
-                # ks_query.save()
+    @classmethod
+    def initialize_ks(cls, ks_name):
+        fields = cls.ALL_KS_FORMATS[ks_name]
+        py_name = fields[0]
+        group_input = fields[1]
+        input_levels = fields[2]
+        output_levels = fields[3]
+        print(ks_name, "\t\t", py_name, "\t", group_input, "\t", input_levels, "\t", output_levels)
+
+        print(cls)
+        ks_query = cls()
+        ks_query.name=ks_name
+        ks_query.py_name=py_name
+        ks_query.group_input=group_input
+        # ks_query.save()
+        for j, input_level in enumerate(input_levels):
+            ks_query.inputs = input_level
+            ks_input_query = KsInput(keep_db_in_synch=True)
+            ks_input_query.ks=ks_query.id
+            ks_input_query.data_level=input_level
+            # ks_input_query.save()
+        for k, output_level in enumerate(output_levels):
+            ks_query.outputs = output_level
+            ks_output_query = KsOutput(keep_db_in_synch=True)
+            ks_output_query.ks=ks_query.id
+            ks_output_query.data_level=output_level
+            # ks_output_query.save()
+        # ks_query.save()
 
