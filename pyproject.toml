@@ -20,7 +20,7 @@ repository = "https://github.com/csse-uoft/smile-base"
 where = ["src"]
 include = ["smile_base", "smile_base.*"]
 exclude = ["tests"]
-namespaces = false
+namespaces = true
 
 [tool.setuptools.package-data]
 "*" = ["*.*"]
