@@ -97,7 +97,7 @@ class KSAR(GraphNode):
 
         text = []
         text += [f"ID:\t{self.id}"]
-        text += [f"Name:\t{ks.py_name}"]
+        text += [f"KS Name:\t{ks.py_name}" + f"\tPyName:\t{ks.name}" + f"\tKS ID:\t{ks.id}"]
         text += [f"Trace:\t{self.trace}"]
         text += [f"Triggering Event:\t{self.trigger_event}"]
         text += [f"Cycle:\t{self.cycle}"]

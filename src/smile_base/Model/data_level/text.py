@@ -28,6 +28,7 @@ class Text(Hypothesis):
         'content'   : {'pred':smile.hasContent, 'cardinality':'one'},
         'sentences'  : {'pred':smile.hasSentence, 'cardinality':'many'},
         'phrases'  : {'pred':smile.hasPhrases, 'cardinality':'many'},
+        'words'  : {'pred':smile.hasWords, 'cardinality':'many'},
     }
     relations = {**klass_relations, **super_relations}
 
