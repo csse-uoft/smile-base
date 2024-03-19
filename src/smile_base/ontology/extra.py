@@ -218,7 +218,7 @@ class hasPhrases(ObjectProperty):
     rdfs.comment = ["Holds Word that acts as main Word object."]
     range = [Thing]
     pyrange = ['smile.Phrase']
-    pyrange = ['smile.Word', 'smile.Sentence', 'smile.Text']
+    pydomain = ['smile.Word', 'smile.Sentence', 'smile.Text']
 
 class hasPos(ObjectProperty):
     rdfs.comment = ["Holds part-of-speach label for main object."]
@@ -292,7 +292,6 @@ class hasPredOntoRel(DataProperty):
     rdfs.comment = ["Holds RDF Predicate for this tripple's main object."]
     range = [str]
     pydomain = ['smile.Rel']
-    # pyrange = ['smile.Word']
 
 class hasSubject(ObjectProperty):
     rdfs.comment = ["Holds Subject for main object."]
