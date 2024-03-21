@@ -5,8 +5,8 @@ smile = default_world.get_ontology(CONFIG.NM)
 
 with smile:
     from ...ontology.extra import *
-    from py2graphdb.Models.graph_node import GraphNode, SPARQLDict, _resolve_nm
-    from py2graphdb.utils.db_utils import resolve_nm_for_dict, PropertyList
+    from py2graphdb.Models.graph_node import GraphNode
+    from py2graphdb.utils.db_utils import SPARQLDict, _resolve_nm, encode_inst, resolve_nm_for_dict, PropertyList
     from .ks_input import KsInput
     from .ks_output import KsOutput
 
@@ -154,7 +154,7 @@ class Ks(GraphNode):
         print(ks_name, "\t\t", py_name, "\t", group_input, "\t", input_levels, "\t", output_levels)
 
         print(cls)
-        ks_query = cls()
+        ks_query = cls(inst_id=encode_inst(f"{ks_name}_{py_name}"))
         ks_query.name=ks_name
         ks_query.py_name=py_name
         ks_query.group_input=group_input
