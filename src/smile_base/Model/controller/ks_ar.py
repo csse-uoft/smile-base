@@ -123,6 +123,6 @@ class KSAR(GraphNode):
 
         file_object = open(filename, 'a')
         # Append 'hello' at the end of file
-        file_object.write("\n\n"+"\n".join([str(datetime.datetime.today().strftime("%y:%m:%d %H:%M:%S")) + "\t" + str(t) for t in text]) + "\n")
+        file_object.write("\n".join([str(datetime.datetime.today().strftime("%y:%m:%d %H:%M:%S")) + "\t" + str(t) for t in text]) + "\n\n\n")
         # Close the file
         file_object.close()
