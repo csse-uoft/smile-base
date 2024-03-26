@@ -97,7 +97,10 @@ class Spo(Hypothesis):
         :param certainty: certainty level of this hypothesis
         :return: found/generated spo query
         """
-        node = cls.find( trace_id=trace_id, subject_id=subject_id, predicate_id=predicate_id, object_id=object_id, request_id=request_id)
+        node = cls.find(trace_id=trace_id, subject_id=subject_id, predicate_id=predicate_id, object_id=object_id, request_id=request_id)
         if node is None:
             node = cls.generate( trace_id=trace_id, request_id=request_id, subject_id=subject_id, predicate_id=predicate_id, object_id=object_id, certainty=certainty)
+        else:
+            node.certainty = max(node.certainty, certainty)
+            node.save()
         return node

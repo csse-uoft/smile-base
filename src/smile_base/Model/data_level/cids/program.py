@@ -93,7 +93,10 @@ class Program(Hypothesis,cids.Program):
         :param certainty: certainty level in float
         :return: found/generated phrase query
         """
-        node = cls.find( trace_id=trace_id,phrase_id=phrase_id, request_id=request_id)
+        node = cls.find(trace_id=trace_id,phrase_id=phrase_id, request_id=request_id)
         if node is None:
             node = cls.generate( trace_id=trace_id,request_id=request_id, phrase_id=phrase_id, certainty=certainty)
+        else:
+            node.certainty = max(node.certainty, certainty)
+            node.save()
         return node

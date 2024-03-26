@@ -82,8 +82,11 @@ class Text(Hypothesis):
         :param content: text to be stored
         :return: found/generated dep query
         """
-        node = cls.find( trace_id=trace_id, request_id = request_id, content=content)
+        node = cls.find(trace_id=trace_id, request_id = request_id, content=content)
         if node is None:
             node = cls.generate(trace_id=trace_id, request_id=request_id, content=content, certainty=certainty)
+        else:
+            node.certainty = max(node.certainty, certainty)
+            node.save()
         return node
 

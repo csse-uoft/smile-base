@@ -107,7 +107,10 @@ class Phrase(Hypothesis):
         :param certainty: certainty level in float
         :return: found/generated phrase query
         """
-        node = cls.find( trace_id=trace_id,request_id=request_id, content=content, start=start, end=end)
+        node = cls.find(trace_id=trace_id,request_id=request_id, content=content, start=start, end=end)
         if node is None:
             node = cls.generate( trace_id=trace_id,request_id=request_id, content=content, start=start, end=end, certainty=certainty)
+        else:
+            node.certainty = max(node.certainty, certainty)
+            node.save()
         return node

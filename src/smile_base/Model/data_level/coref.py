@@ -107,5 +107,8 @@ class CoRef(Hypothesis):
             node = cls.generate(
                 request_id=request_id,  trace_id=trace_id,
                 coref_word_id=coref_word_id, ref_word_id=ref_word_id, certainty=certainty)
+        else:
+            node.certainty = max(node.certainty, certainty)
+            node.save()
         return node
 

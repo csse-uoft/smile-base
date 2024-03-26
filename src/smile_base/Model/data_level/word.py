@@ -133,8 +133,11 @@ class Word(Hypothesis):
         :param phrase: associated phrase
         :return: found/generated word query
         """
-        object = cls.find(request_id=request_id, content=content, content_label=content_label, start=start, end=end, trace_id=trace_id)
-        if object is None:
-            object = cls.generate(request_id=request_id, content=content, content_label=content_label, start=start, end=end, certainty=certainty, phrase=phrase, trace_id=trace_id)
-        return object
+        node = cls.find(request_id=request_id, content=content, content_label=content_label, start=start, end=end, trace_id=trace_id)
+        if node is None:
+            node = cls.generate(request_id=request_id, content=content, content_label=content_label, start=start, end=end, certainty=certainty, phrase=phrase, trace_id=trace_id)
+        else:
+            node.certainty = max(node.certainty, certainty)
+            node.save()
+        return node
 

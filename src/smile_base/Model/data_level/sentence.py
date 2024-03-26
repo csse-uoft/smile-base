@@ -106,7 +106,10 @@ class Sentence(Hypothesis):
         :param certainty: certainty level in float
         :return: found/generated sentence query
         """
-        node = cls.find( trace_id=trace_id,request_id=request_id, index=index, content=content, start=start, end=end)
+        node = cls.find(trace_id=trace_id,request_id=request_id, index=index, content=content, start=start, end=end)
         if node is None:
             node = cls.generate( trace_id=trace_id,request_id=request_id, index=index, content=content, start=start, end=end)
+        else:
+            node.certainty = max(node.certainty, certainty)
+            node.save()
         return node
