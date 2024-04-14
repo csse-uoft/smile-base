@@ -5,6 +5,7 @@ smile = default_world.get_ontology(CONFIG.NM)
 with smile:
     from py2graphdb.Models.graph_node import GraphNode, SPARQLDict, _resolve_nm
     from py2graphdb.utils.db_utils import resolve_nm_for_dict, PropertyList
+    from py2graphdb.ontology.operators import *
 from .hypothesis import Hypothesis
 
 class Phrase(Hypothesis):
@@ -66,12 +67,30 @@ class Phrase(Hypothesis):
         :param end: end position of phrase in the Text, starting at 0
         :return: found phrase query
         """
-        inst =  SPARQLDict._get(klass=cls.klass, props={
-            smile.hasTraceID    : trace_id,
-            smile.hasContent    : content,
-            smile.hasStart      : start,
-            smile.hasEnd        : end,
-        })
+        if start is not None and end is not None:
+            props = {
+                smile.hasTraceID    : trace_id,
+                smile.hasContent    : content,
+                smile.hasStart      : start,
+                smile.hasEnd        : end
+            }
+            inst =  SPARQLDict._get(klass=cls.klass, props=props)
+        else:
+            props = {
+                smile.hasTraceID    : trace_id,
+                smile.hasContent    : content
+            }
+            if start is None:
+                props[notexists(smile.hasStart)] = None
+            else:
+                props[smile.hasStart] = start
+
+            if end is None:
+                props[notexists(smile.hasEnd)] = None
+            else:
+                props[smile.hasEnd] = end
+            insts =  SPARQLDict._search(klass=cls.klass, props=props, how='first')
+            inst = insts[0] if len(insts)>0  else None
         return cls(inst=inst) if inst else None
 
     @classmethod
@@ -111,6 +130,9 @@ class Phrase(Hypothesis):
         if node is None:
             node = cls.generate( trace_id=trace_id,request_id=request_id, content=content, start=start, end=end, certainty=certainty)
         else:
-            node.certainty = max(node.certainty, certainty)
+            if node.certainty is not None:
+                node.certainty = max(node.certainty, certainty)
+            else:
+                node.certainty = certainty
             node.save()
         return node
