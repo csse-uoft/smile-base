@@ -67,6 +67,7 @@ class Phrase(Hypothesis):
         :param end: end position of phrase in the Text, starting at 0
         :return: found phrase query
         """
+        node = None
         if start is not None and end is not None:
             props = {
                 smile.hasTraceID    : trace_id,
@@ -75,6 +76,7 @@ class Phrase(Hypothesis):
                 smile.hasEnd        : end
             }
             inst =  SPARQLDict._get(klass=cls.klass, props=props)
+            node = cls(inst=inst)
         else:
             props = {
                 smile.hasTraceID    : trace_id,
