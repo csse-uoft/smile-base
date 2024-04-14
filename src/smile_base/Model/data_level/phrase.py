@@ -76,7 +76,8 @@ class Phrase(Hypothesis):
                 smile.hasEnd        : end
             }
             inst =  SPARQLDict._get(klass=cls.klass, props=props)
-            node = cls(inst=inst)
+            if inst is not None:
+                node = cls.get(inst_id=inst['ID'])
         else:
             props = {
                 smile.hasTraceID    : trace_id,
@@ -93,7 +94,7 @@ class Phrase(Hypothesis):
                 props[smile.hasEnd] = end
             insts =  SPARQLDict._search(klass=cls.klass, props=props, how='first')
             if len(insts)>0:
-                node = smile.Phrase.get(insts[0]['ID'])
+                node = cls.get(insts[0]['ID'])
             else:
                 node = None
         return node
