@@ -90,8 +90,11 @@ class Phrase(Hypothesis):
             else:
                 props[smile.hasEnd] = end
             insts =  SPARQLDict._search(klass=cls.klass, props=props, how='first')
-            inst = insts[0] if len(insts)>0  else None
-        return cls(inst=inst) if inst else None
+            if len(insts)>0:
+                node = smile.Phrase.get(insts[0]['ID'])
+            else:
+                node = None
+        return node
 
     @classmethod
     def generate(cls, trace_id, content, start, end, request_id=None, certainty=1):
@@ -128,11 +131,12 @@ class Phrase(Hypothesis):
         """
         node = cls.find(trace_id=trace_id,request_id=request_id, content=content, start=start, end=end)
         if node is None:
-            node = cls.generate( trace_id=trace_id,request_id=request_id, content=content, start=start, end=end, certainty=certainty)
+            node = cls.generate(trace_id=trace_id,request_id=request_id, content=content, start=start, end=end, certainty=certainty)
         else:
             if node.certainty is not None:
                 node.certainty = max(node.certainty, certainty)
             else:
                 node.certainty = certainty
             node.save()
+
         return node
