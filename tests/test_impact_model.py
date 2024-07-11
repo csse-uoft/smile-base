@@ -15,9 +15,8 @@ import unittest
 from py2graphdb.utils.misc_lib import *
 
 with smile:
+    from src.smile_base.ontology.namespaces import cids
     from py2graphdb.utils.db_utils import PropertyList, SPARQLDict, resolve_nm_for_dict, Thing, _resolve_nm
-    
-    
 
 def delete_test_nodes():
     Organization(inst_id=f'smile.1000', keep_db_in_synch = True).delete()
@@ -38,7 +37,6 @@ class TestConfig():
             program = Program(inst_id=f'smile.1002', keep_db_in_synch = True)
             service = Service(inst_id=f'smile.1003', keep_db_in_synch = True)
             outcome = Outcome(inst_id=f'smile.1004', keep_db_in_synch = True)
-            #breakpoint()
 
             logic_model.organization = organization.inst_id
             logic_model.program = program.inst_id
@@ -71,7 +69,7 @@ class TestImpactModel(unittest.TestCase):
             res = SPARQLDict._process_path_request(start, end, action='collect', preds=preds, direction='children', how='all')
             print("TEST 1")
             print(res)
-            # self.assertEqual(res, [{'start': 'smile.1000', 'end': 'smile.1004', 'path': ['smile.1001', 'smile.1002', 'smile.1003']}])
+            self.assertEqual(res, [{'start': 'smile.1001', 'end': 'smile.1004', 'path': ['smile.1002', 'smile.1003']}])
 
     def test_path_no_end(self):
         with smile:
@@ -80,19 +78,19 @@ class TestImpactModel(unittest.TestCase):
             res = SPARQLDict._process_path_request(start, None, action='collect', preds=preds, direction='children', how='all')
             print("TEST 2")
             print(res)
-            # self.assertEqual(res, [
-            #     {'start': 'smile.1000', 'end': 'smile.1004', 'path': ['smile.1001', 'smile.1002', 'smile.1003']}, 
-            #     {'start': 'smile.1000', 'end': 'smile.1003', 'path': ['smile.1001', 'smile.1002']}, 
-            #     {'start': 'smile.1000', 'end': 'smile.1002', 'path': ['smile.1001']}, 
-            #     {'start': 'smile.1000', 'end': 'smile.1001', 'path': []}])
+            self.assertEqual(res, [
+                {'start': 'smile.1001', 'end': 'smile.1004', 'path': ['smile.1002', 'smile.1003']}, 
+                {'start': 'smile.1001', 'end': 'smile.1003', 'path': ['smile.1002']}, 
+                {'start': 'smile.1001', 'end': 'smile.1002', 'path': []}, 
+                {'start': 'smile.1001', 'end': 'smile.1000', 'path': []}])
 
     def test_path_reverse(self):
         with smile:    
             start = 'smile.1004'
-            end = 'smile.1000'
+            end = 'smile.1001'
             preds = [smile.forOrganization, smile.hasProgram, smile.hasService, smile.hasStakeholderOutcome]
             res = SPARQLDict._process_path_request(start, end, action='collect', preds=preds, direction='parents', how='all')
-            # self.assertEqual(res, [{'start': 'smile.1004', 'end': 'smile.1000', 'path': ['smile.1003', 'smile.1002', 'smile.1001']}])
+            self.assertEqual(res, [{'start': 'smile.1004', 'end': 'smile.1001', 'path': ['smile.1003', 'smile.1002']}])
 
 
     def test_path_not_exist(self):
@@ -109,7 +107,7 @@ class TestImpactModel(unittest.TestCase):
             end = 'smile.1004'
             preds = [smile.forOrganization, smile.hasProgram, smile.hasService, smile.hasStakeholderOutcome]
             res = SPARQLDict._process_path_request(start, end, action='distance', preds=preds, direction='children', how='all')
-            # self.assertEqual(res, [{'start': 'smile.1001', 'end': 'smile.1004', 'distance': 3}])
+            self.assertEqual(res, [{'start': 'smile.1001', 'end': 'smile.1004', 'distance': 3}])
 
 
     
