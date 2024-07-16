@@ -109,5 +109,6 @@ class TestImpactModel(unittest.TestCase):
             res = SPARQLDict._process_path_request(start, end, action='distance', preds=preds, direction='children', how='all')
             self.assertEqual(res, [{'start': 'smile.1001', 'end': 'smile.1004', 'distance': 3}])
 
-
+if __name__ == '__main__':
+    unittest.main(exit=False)
     
