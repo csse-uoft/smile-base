@@ -1,9 +1,10 @@
 from __main__ import *
 from py2graphdb.config import config as CONFIG
 from owlready2 import default_world, ObjectProperty, DataProperty, rdfs, Thing , onto_path
+onto_path.append('src/smile_base/ontology/ontology_cache/')
 from src.smile_base.Model.data_level.cids import Organization, LogicModel, Program, Service, Outcome
+from src.smile_base.ontology.namespaces import cids
 
-onto_path.append('input/ontology_cache/')
 import os
 if os.path.exists(CONFIG.LOG_FILE): 
   os.remove(CONFIG.LOG_FILE)
@@ -15,7 +16,7 @@ import unittest
 from py2graphdb.utils.misc_lib import *
 
 with smile:
-    from src.smile_base.ontology.namespaces import cids
+    from src.smile_base.ontology.namespaces import *
     from py2graphdb.utils.db_utils import PropertyList, SPARQLDict, resolve_nm_for_dict, Thing, _resolve_nm
 
 def delete_test_nodes():
@@ -45,6 +46,7 @@ class TestConfig():
             
             #organization <- logic_model -> program -> service -> outcome
 
+preds = [f"<{cids.forOrganization.iri}>", f"<{cids.hasProgram.iri}>", f"<{cids.hasService.iri}>", f"<{cids.hasStakeholderOutcome.iri}>"]
 class TestImpactModel(unittest.TestCase):
     @classmethod
     def setUpClass(self):
@@ -56,7 +58,6 @@ class TestImpactModel(unittest.TestCase):
         smile.save(owl_file)
         set_config(CONFIG.SERVER_URL, CONFIG.REPOSITORY, username='admin', password='admin')
         import_and_wait(owl_file, replace_graph=True)
-
         SPARQLDict._clear_graph(graph=CONFIG.GRAPH_NAME)
 
         self.config = TestConfig()
@@ -65,19 +66,13 @@ class TestImpactModel(unittest.TestCase):
         with smile:
             start = 'smile.1001'
             end = 'smile.1004'
-            preds = [smile.forOrganization, smile.hasProgram, smile.hasService, smile.hasStakeholderOutcome]
             res = SPARQLDict._process_path_request(start, end, action='collect', preds=preds, direction='children', how='all')
-            print("TEST 1")
-            print(res)
             self.assertEqual(res, [{'start': 'smile.1001', 'end': 'smile.1004', 'path': ['smile.1002', 'smile.1003']}])
 
     def test_path_no_end(self):
         with smile:
             start = 'smile.1001'
-            preds = [smile.forOrganization, smile.hasProgram, smile.hasService, smile.hasStakeholderOutcome]
             res = SPARQLDict._process_path_request(start, None, action='collect', preds=preds, direction='children', how='all')
-            print("TEST 2")
-            print(res)
             self.assertEqual(res, [
                 {'start': 'smile.1001', 'end': 'smile.1004', 'path': ['smile.1002', 'smile.1003']}, 
                 {'start': 'smile.1001', 'end': 'smile.1003', 'path': ['smile.1002']}, 
@@ -88,16 +83,13 @@ class TestImpactModel(unittest.TestCase):
         with smile:    
             start = 'smile.1004'
             end = 'smile.1001'
-            preds = [smile.forOrganization, smile.hasProgram, smile.hasService, smile.hasStakeholderOutcome]
             res = SPARQLDict._process_path_request(start, end, action='collect', preds=preds, direction='parents', how='all')
             self.assertEqual(res, [{'start': 'smile.1004', 'end': 'smile.1001', 'path': ['smile.1003', 'smile.1002']}])
-
 
     def test_path_not_exist(self):
         with smile:    
             start = 'smile.1004'
             end = 'smile.1002'
-            preds = [smile.forOrganization, smile.hasProgram, smile.hasService, smile.hasStakeholderOutcome]
             res = SPARQLDict._process_path_request(start, end, action='ask', preds=preds, direction='children', how='all')
             self.assertFalse(res)
 
@@ -105,7 +97,6 @@ class TestImpactModel(unittest.TestCase):
         with smile:
             start = 'smile.1001'
             end = 'smile.1004'
-            preds = [smile.forOrganization, smile.hasProgram, smile.hasService, smile.hasStakeholderOutcome]
             res = SPARQLDict._process_path_request(start, end, action='distance', preds=preds, direction='children', how='all')
             self.assertEqual(res, [{'start': 'smile.1001', 'end': 'smile.1004', 'distance': 3}])
 
