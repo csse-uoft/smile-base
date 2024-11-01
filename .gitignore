@@ -11,6 +11,7 @@ tokenizers
 pyscript/app/templates/graph.pdf
 pyscript/app/templates/org_dynamic_graph_view*
 
+src/smile_base/ontology/ontology_cache/*.xml
 .DS_Store
 # Byte-compiled / optimized / DLL files
 __pycache__/
