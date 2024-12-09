@@ -75,7 +75,7 @@ class KSAR(GraphNode):
 
 
 
-    def summary(self, filename):
+    def summary(self, filename, method_info=None):
         """
         Generate  log entry for this Knowledge Source
         ID
@@ -103,19 +103,43 @@ class KSAR(GraphNode):
         text += [f"Cycle:\t{self.cycle}"]
         text += [f"Input Hypotheses:"]
         for hypo in in_hypos:
-            text += [f"\t{hypo.klass}\t\"{hypo.show()}\"\t{hypo.id.split('-')[0]}"]
+            if isinstance(hypo, smile.Ner):
+                phrase = Hypothesis(inst_id=hypo.phrase).cast_to_graph_type()
+                text += [f"ID:\t{hypo.id.split('-')[0]}"]
+                text += [f"\tClass:\t{hypo.klass}"]
+                text += [f"\tEntity:\t\"{hypo.entity}({phrase.content})\""]
+                text += [f"\tCertainty:\t{round(hypo.certainty,5) if hypo.certainty == hypo.certainty else hypo.certainty}"]
+            else:
+                text += [f"ID:\t{hypo.id.split('-')[0]}"]
+                text += [f"\tClass:\t{hypo.klass}"]
+                text += [f"\tInfo:\t\"{hypo.show()}\""]
+                text += [f"\tCertainty:\t{round(hypo.certainty,5) if hypo.certainty == hypo.certainty else hypo.certainty}"]
 
         text += ["Expected Outputs:"]
         for output in ks.outputs:
             text += [f"\tOutput Type:\t{output}"]
 
+        text += ['Method Information'] 
+        if method_info is None:
+            text += ["\tnone"]
+        else:
+            for t in method_info.split('\n'):
+                text += [f"\t{t}"]
+
         text += ["Obtained Outputs:"]
         for hypo in out_hypos:
             if isinstance(hypo, smile.Ner):
                 phrase = Hypothesis(inst_id=hypo.phrase).cast_to_graph_type()
-                text += [f"\t{hypo.klass}\t\"{hypo.entity}({phrase.content})\"\t{round(hypo.certainty,5)}\t{hypo.id.split('-')[0]}"]
+                text += [f"ID:\t{hypo.id.split('-')[0]}"]
+                text += [f"\tClass:\t{hypo.klass}"]
+                text += [f"\tEntity:\t\"{hypo.entity}({phrase.content})\""]
+                text += [f"\tCertainty:\t{round(hypo.certainty,5) if hypo.certainty == hypo.certainty else hypo.certainty}"]
+
             else:
-                text += [f"\t{hypo.klass}\t\"{hypo.show()}\"\t{round(hypo.certainty,5)}\t{hypo.id.split('-')[0]}"]
+                text += [f"ID:\t{hypo.id.split('-')[0]}"]
+                text += [f"\tClass:\t{hypo.klass}"]
+                text += [f"\tInfo:\t\"{hypo.show()}\""]
+                text += [f"\tCertainty:\t{round(hypo.certainty,5) if hypo.certainty == hypo.certainty else hypo.certainty}"]
 
         text += [f"Rating:\t{round(rating, 5)}"]
 
@@ -126,3 +150,4 @@ class KSAR(GraphNode):
         file_object.write("\n".join([str(datetime.datetime.today().strftime("%y:%m:%d %H:%M:%S")) + "\t" + str(t) for t in text]) + "\n\n\n")
         # Close the file
         file_object.close()
+     

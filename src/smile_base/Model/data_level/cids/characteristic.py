@@ -5,6 +5,7 @@ smile = default_world.get_ontology(CONFIG.NM)
 from ....ontology.namespaces import ic, geo, cids, org, time, schema, sch, activity, landuse_50872, i72, owl
 with smile:
     from py2graphdb.Models.graph_node import GraphNode, SPARQLDict, _resolve_nm
+    from ..phrase import Phrase
     from py2graphdb.utils.db_utils import resolve_nm_for_dict, PropertyList
 from ..hypothesis import Hypothesis
 
@@ -47,7 +48,13 @@ class Characteristic(Hypothesis,cids.Characteristic):
 
 
     def show(self):
-        return self.klass or ''
+        phrase = ''
+        if self.phrase:
+            node = Phrase.get(self.phrase)
+            if node:
+                phrase = node.show()
+        return phrase if phrase is not None else (f"{self.klass}" or '')
+
 
 
     @classmethod

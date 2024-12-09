@@ -6,6 +6,7 @@ from ....ontology.namespaces import ic, geo, cids, org, time, schema, sch, activ
 
 with smile:
     from py2graphdb.Models.graph_node import GraphNode, SPARQLDict, _resolve_nm
+    from ..phrase import Phrase
     from py2graphdb.utils.db_utils import resolve_nm_for_dict, PropertyList
 from .stakeholder import Stakeholder
 
@@ -42,6 +43,11 @@ class BeneficialStakeholder(Stakeholder,cids.BeneficialStakeholder):
 
 
     def show(self):
-        return self.klass or ''
+        phrase = ''
+        if self.phrase:
+            node = Phrase.get(self.phrase)
+            if node:
+                phrase = node.show()
+        return phrase if phrase is not None else (f"{self.klass}" or '')
 
 
