@@ -58,6 +58,7 @@ class KSAR(GraphNode):
         'request': {'pred':smile.hasRequest, 'cardinality':'one'},
         'cycle':    {'pred':smile.hasCycle, 'cardinality':'one'},
         'trigger_event' :{'pred':smile.hasTriggerDescription, 'cardinality':'one'},
+        'org_certainties' :{'pred':smile.hasOutputHypothesesOrgCertainty, 'cardinality':'many'},
 
         # # Holds pickle version of KnowledgeSource object
         'object_pickle_path': {'pred':smile.hasKSObjectPicklePath, 'cardinality':'one'},

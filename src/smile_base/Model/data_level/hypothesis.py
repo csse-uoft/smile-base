@@ -40,6 +40,7 @@ class Hypothesis(GraphNode):
         'for_ks_ars'  : {'pred':smile.inputForKSARs, 'cardinality':'many'},
         'from_ks_ars' : {'pred':smile.outputOfKSARs, 'cardinality':'many'},
         'certainty' : {'pred':smile.hasCertainty, 'cardinality':'one'},
+        'org_certainties' : {'pred':smile.hasOrgCertainty, 'cardinality':'many'},
     }
     relations = {**klass_relations, **super_relations}
 

@@ -330,6 +330,45 @@ class hasKSAR(ObjectProperty):
     pydomain = ['smile.Ks']
     pyrange = ['smile.KSAR']
 
+
+class hasOutputHypothesesOrgCertainty(ObjectProperty):
+    rdfs.comment = ["Holds original certainty of hypothesis and KSAR."]
+    range = [Thing]
+    pydomain = ['smile.KSAR']
+    pyrange = ['smile.OrgCertainty']
+
+class hasOrgKSAR(ObjectProperty):
+    rdfs.comment = ["Holds original certainty of hypothesis and KSAR."]
+    range = [Thing]
+    pydomain = ['smile.OrgCertainty']
+    pyrange = ['smile.KSAR']
+    inverse_property = hasOutputHypothesesOrgCertainty
+
+class hasOrgHypothesis(ObjectProperty):
+    rdfs.comment = ["Holds original certainty of hypothesis and KSAR."]
+    range = [Thing]
+    pydomain = ['smile.OrgCertainty']
+    pyrange = ['smile.Hypothesis']
+
+class hasOrgCertainty(ObjectProperty):
+    rdfs.comment = ["Holds original certainty of hypothesis and KSAR."]
+    range = [Thing]
+    pydomain = ['smile.OrgCertainty']
+    pyrange = ['smile.Hypothesis']
+    inverse_property = hasOrgHypothesis
+
+class hasOrgCertaintyValue(DataProperty):
+    rdfs.comment = ["Certainty value for this object."]
+    range = [float]
+    pydomain =['smile.OrgCertainty']
+
+class hasOrgKSAR(ObjectProperty):
+    rdfs.comment = ["Holds original certainty of hypothesis and KSAR."]
+    range = [Thing]
+    pydomain = ['smile.OrgCertainty']
+    pyrange = ['smile.KSAR']
+
+
 class hasInputLevel(ObjectProperty):
     rdfs.comment = ["Holds KSAR objects captured by this object."]
     range = [Thing]
