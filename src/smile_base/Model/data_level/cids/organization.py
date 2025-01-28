@@ -33,6 +33,7 @@ class Organization(Hypothesis,cids.Organization):
         'phrase' : {'pred':smile.hasPhrase, 'cardinality':'one'},
         'name'  : {'pred':org.hasName,'cardinality':'many'},
         'desc': {'pred':cids.hasDescription, 'cardinality':'many', 'range':[str]},
+        'outcome'   : {'pred':cids.hasOutcome, 'cardinality':'many'},
     }
 
     relations = {**klass_relations, **super_relations}

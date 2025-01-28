@@ -1,4 +1,4 @@
-from config import config as CONFIG
+from py2graphdb.config import config as CONFIG
 from ..app.scripts.misc_lib import *
 import tqdm
 
@@ -35,7 +35,7 @@ with smile:
 
 with smile:
     from pprint import pprint
-    import re
+    import re, hashlib
     import numpy as np
     from .db_utils import global_db
     from .db_utils import escape_str, get_instance, get_blank_instance, logger, global_db, \

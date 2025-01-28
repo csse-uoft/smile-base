@@ -287,12 +287,6 @@ class hasTag(DataProperty):
     range = [str]
     pydomain = ['smile.Pos']
 
-
-class hasPredOntoRel(DataProperty):
-    rdfs.comment = ["Holds RDF Predicate for this tripple's main object."]
-    range = [str]
-    pydomain = ['smile.Rel']
-
 class hasSubject(ObjectProperty):
     rdfs.comment = ["Holds Subject for main object."]
     range = [Thing]
@@ -310,6 +304,22 @@ class hasPredicate(ObjectProperty):
     range = [Thing]
     pydomain = ['smile.Rel', 'smile.Spo']
     pyrange = ['smile.Word']
+
+class hasRDFPropertySubject(ObjectProperty):
+    rdfs.comment = ["Holds RDF Property Subject for main subject."]
+    range = [Thing]
+    range = [Thing]
+
+class hasRDFPropertyObject(ObjectProperty):
+    rdfs.comment = ["Holds RDF Property Object for relation object."]
+    range = [Thing]
+    domain = [Thing]
+
+class hasRDFPropertyPredicate(ObjectProperty):
+    rdfs.comment = ["Holds RDF Property Predicate for relation predicate."]
+    range = [Thing]
+    domain = [Thing]
+
 
 class hasSPO(ObjectProperty):
     rdfs.comment = ["Holds SPO for relation object."]
@@ -376,3 +386,13 @@ class hasInputLevel(ObjectProperty):
 class hasOutputLevel(ObjectProperty):
     rdfs.comment = ["Holds KSAR objects captured by this object."]
     range = [Thing]
+
+
+################################################
+# Hypothesis Properties
+################################################
+# class hasOutcome(ObjectProperty):
+#     rdfs.comment = ["Holds Concepts for main object."]
+#     range = [Thing]
+#     pydomain = ['smile.Phrase']
+#     pyrange = ['smile.Characteristic', 'smile.Code', 'smile.Input', 'smile.LogicModel', 'smile.Organization', 'smile.Outcome', 'smile.Output', 'smile.Program', 'smile.Service', 'smile.Stakeholder', 'smile.BeneficialStakeholder']

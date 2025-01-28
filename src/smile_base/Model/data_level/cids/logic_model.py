@@ -32,6 +32,7 @@ class LogicModel(Hypothesis,cids.LogicModel):
         'phrase' : {'pred':smile.hasPhrase, 'cardinality':'one'},
         'organization' : {'pred':cids.forOrganization, 'cardinality':'many'},
         'program' : {'pred':cids.hasProgram, 'cardinality':'many'},
+        'outcome'   : {'pred':cids.hasOutcome, 'cardinality':'many'},
     }
     relations = {**klass_relations, **super_relations}
 

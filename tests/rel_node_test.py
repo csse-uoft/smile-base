@@ -1,5 +1,5 @@
-from config import config as CONFIG
-from .scripts.misc_lib import *
+from py2graphdb.config import config as CONFIG
+from py2graphdb.utils.misc_lib import *
 import tqdm
 
 
@@ -21,10 +21,10 @@ from owlready2.entity import ThingClass
 
 with smile:
     from pprint import pprint
-    import re
+    import re, hashlib
     import numpy as np
-    from pyscript.Model.data_level.rel import Rel, SPARQLDict, hashlib
-    from pyscript.Model.controller.trace import Trace
+    from src.smile_base.Model.data_level.rel import Rel, SPARQLDict
+    from src.smile_base.Model.controller.trace import Trace
     # from ..app.ontology.extra import *
     # hasTraceID.range = [Trace]
     print()
@@ -48,12 +48,10 @@ with smile:
     test_inst0.predicate = rr2
     test_inst0.object = rr3
     test_inst0.spo = rr4
-    test_inst0.predicate_onto_rel = rr5
     assert test_inst0._subject == f"smile.{rr1}"
     assert test_inst0._predicate == f"smile.{rr2}"
     assert test_inst0._object == f"smile.{rr3}"
     assert test_inst0._spo == f"smile.{rr4}"
-    assert test_inst0._predicate_onto_rel == rr5
     p_bar.n = TEST_I = TEST_I + 1
     p_bar.refresh()
 
@@ -75,7 +73,7 @@ with smile:
     rr3 = f"{int(np.random.rand()*10**10)}"
     rr4 = f"{int(np.random.rand()*10**10)}"
     rr5 = f"{int(np.random.rand()*10**10)}"
-    node = Rel.find(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4, predicate_onto_rel=rr5)
+    node = Rel.find(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4)
     assert node is None
     p_bar.n = TEST_I = TEST_I + 1
     p_bar.refresh()
@@ -88,8 +86,8 @@ with smile:
     rr3 = f"{int(np.random.rand()*10**10)}"
     rr4 = f"{int(np.random.rand()*10**10)}"
     rr5 = f"{int(np.random.rand()*10**10)}"
-    node_add = Rel.generate(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4, predicate_onto_rel=rr5)
-    node_found = Rel.find(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4, predicate_onto_rel=rr5)
+    node_add = Rel.generate(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4)
+    node_found = Rel.find(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4)
     inst = SPARQLDict._get(klass="smile.Rel", inst_id=node_add.inst_id)
 
     assert node_add.inst_id == node_found.inst_id
@@ -108,8 +106,8 @@ with smile:
     rr3 = f"{int(np.random.rand()*10**10)}"
     rr4 = f"{int(np.random.rand()*10**10)}"
     rr5 = f"{int(np.random.rand()*10**10)}"
-    node_add = Rel.generate(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4, predicate_onto_rel=rr5)
-    node_found = Rel.find(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4, predicate_onto_rel=rr5)
+    node_add = Rel.generate(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4)
+    node_found = Rel.find(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4)
     inst = SPARQLDict._get(klass="smile.Rel", inst_id=node_add.inst_id)
 
     assert node_add.inst_id == node_found.inst_id
@@ -117,7 +115,6 @@ with smile:
     assert node_add.predicate == node_found.predicate
     assert node_add.object == node_found.object
     assert node_add.spo == node_found.spo
-    assert node_add.predicate_onto_rel == node_found.predicate_onto_rel
     assert node_add.trace == inst[smile.hasTraceID][0]
     p_bar.n = TEST_I = TEST_I + 1
     p_bar.refresh()
@@ -130,8 +127,8 @@ with smile:
     rr3 = f"{int(np.random.rand()*10**10)}"
     rr4 = f"{int(np.random.rand()*10**10)}"
     rr5 = f"{int(np.random.rand()*10**10)}"
-    node_add = Rel.generate(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4, predicate_onto_rel=rr5)
-    node_found = Rel.find(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4, predicate_onto_rel=rr5)
+    node_add = Rel.generate(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4)
+    node_found = Rel.find(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4)
     inst = SPARQLDict._get(klass="smile.Rel", inst_id=node_add.inst_id)
 
     assert node_add.inst_id == node_found.inst_id
@@ -139,7 +136,6 @@ with smile:
     assert node_add.predicate == node_found.predicate
     assert node_add.object == node_found.object
     assert node_add.spo == node_found.spo
-    assert node_add.predicate_onto_rel == node_found.predicate_onto_rel
     assert node_add.trace == inst[smile.hasTraceID][0]
     p_bar.n = TEST_I = TEST_I + 1
     p_bar.refresh()
@@ -152,8 +148,8 @@ with smile:
     rr3 = f"{int(np.random.rand()*10**10)}"
     rr4 = f"{int(np.random.rand()*10**10)}"
     rr5 = f"{int(np.random.rand()*10**10)}"
-    node_add = Rel.find(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4, predicate_onto_rel=rr5)
-    node_found = Rel.find_generate(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4, predicate_onto_rel=rr5)
+    node_add = Rel.find(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4)
+    node_found = Rel.find_generate(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4)
     inst = SPARQLDict._get(klass="smile.Rel", inst_id=node_found.inst_id)
 
     assert node_add is None
@@ -162,7 +158,6 @@ with smile:
     assert node_found.predicate == f"smile.{rr2}"
     assert node_found.object == f"smile.{rr3}"
     assert node_found.spo == f"smile.{rr4}"
-    assert node_found.predicate_onto_rel == rr5
     assert node_found.trace == inst[smile.hasTraceID][0]
     p_bar.n = TEST_I = TEST_I + 1
     p_bar.refresh()
@@ -175,8 +170,8 @@ with smile:
     rr3 = f"{int(np.random.rand()*10**10)}"
     rr4 = f"{int(np.random.rand()*10**10)}"
     rr5 = f"{int(np.random.rand()*10**10)}"
-    node_add = Rel.generate(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4, predicate_onto_rel=rr5)
-    node_found = Rel.find_generate(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4, predicate_onto_rel=rr5)
+    node_add = Rel.generate(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4)
+    node_found = Rel.find_generate(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4)
     inst = SPARQLDict._get(klass="smile.Rel", inst_id=node_add.inst_id)
 
     assert node_add.inst_id == node_found.inst_id
@@ -193,8 +188,8 @@ with smile:
     rr3 = f"{int(np.random.rand()*10**10)}"
     rr4 = f"{int(np.random.rand()*10**10)}"
     rr5 = f"{int(np.random.rand()*10**10)}"
-    node_add = Rel.generate(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4, predicate_onto_rel=rr5)
-    node_found = Rel.find_generate(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4, predicate_onto_rel=rr5)
+    node_add = Rel.generate(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4)
+    node_found = Rel.find_generate(trace_id=rr, subject_id=rr1, predicate_id=rr2, object_id=rr3, spo_id=rr4)
     inst = SPARQLDict._get(klass="smile.Rel", inst_id=node_add.inst_id)
     hypo = Rel()
     hypo.inst_id = inst['ID']

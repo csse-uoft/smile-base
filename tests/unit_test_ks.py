@@ -4,7 +4,7 @@ from .unit_test_extra import *
 # from .db_utils import smile, rdf_nm,  SPARQLDict
 from .db_utils import PropertyList, SPARQLDict, resolve_nm_for_ttl, resolve_nm_for_dict, Thing, smile
 
-import re
+import re, hashlib
 class UnitTestNode(GraphNode):
     """
         A db Model class that defines the schema for Traces.

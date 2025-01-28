@@ -35,7 +35,7 @@ class Service(Hypothesis,cids.Service):
         'desc': {'pred':cids.hasDescription, 'cardinality':'many'},
         'beneficial'   : {'pred':cids.hasBeneficialStakeholder, 'cardinality':'many'},
         'contributing'   : {'pred':cids.hasContributingStakeholder, 'cardinality':'many'},
-        'outcome'   : {'pred':cids.hasStakeholderOutcome, 'cardinality':'many'},
+        'outcome'   : {'pred':cids.hasOutcome, 'cardinality':'many'},
         'output'   : {'pred':cids.hasOutput, 'cardinality':'many'},
         'input'   : {'pred':cids.hasInput, 'cardinality':'many'},
         'impact_model' : {'pred':oep.partOf, 'cardinality':'one'},

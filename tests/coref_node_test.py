@@ -1,5 +1,5 @@
-from config import config as CONFIG
-from .scripts.misc_lib import *
+from py2graphdb.config import config as CONFIG
+from py2graphdb.utils.misc_lib import *
 import tqdm
 
 
@@ -20,11 +20,11 @@ TEST_I = 0
 
 with smile:
     from pprint import pprint
-    import re
+    import re, hashlib
     import numpy as np
-    from pyscript.Model.data_level.coref import CoRef, SPARQLDict, hashlib
-    from pyscript.Model.controller.trace import Trace
-    from pyscript.Model.data_level.word import Word
+    from src.smile_base.Model.data_level.coref import CoRef, SPARQLDict
+    from src.smile_base.Model.controller.trace import Trace
+    from src.smile_base.Model.data_level.word import Word
     print()
 
 test_name = os.path.basename(__file__).rpartition(r'.')[0]
