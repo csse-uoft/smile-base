@@ -5,6 +5,8 @@ smile = default_world.get_ontology(CONFIG.NM)
 with smile:
     from py2graphdb.Models.graph_node import GraphNode, SPARQLDict, _resolve_nm
     from py2graphdb.utils.db_utils import resolve_nm_for_dict, PropertyList
+    from .phrase import Phrase
+
 from .hypothesis import Hypothesis
 
 class RDFProperty(Hypothesis):
@@ -46,7 +48,10 @@ class RDFProperty(Hypothesis):
     exec(imported_code)
 
     def show(self):
-        return self.spo or ''
+        return '/'.join([Phrase.get(self.subject).show() if self.subject is not None else '',
+                        Phrase.get(self.predicate).show() if self.predicate is not None else '',
+                        Phrase.get(self.object).show() if self.object is not None else ''
+        ])
 
     @classmethod
     def find(cls, trace_id, subject_id, predicate_id, object_id, request_id=None):
